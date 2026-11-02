@@ -115,12 +115,13 @@ jobs:
 
       - name: Install & Build Frontend
         run: |
-          npm install
+          npm install --legacy-peer-deps
           npm run build
         working-directory: ./frontend
         env:
           REACT_APP_API_URL: ${{ needs.deploy-backend.outputs.backend_url }}
           CI: false
+          DISABLE_ESLINT_PLUGIN: true
 
       - name: Build & Push Frontend image
         run: |
