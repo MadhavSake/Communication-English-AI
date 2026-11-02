@@ -30,6 +30,14 @@ npm-debug.log*
 gcp-key.json
 service-account*.json
 
+# Terraform
+terraform/.terraform/
+terraform/.terraform.lock.hcl
+terraform/terraform.tfvars
+terraform/*.tfstate
+terraform/*.tfstate.backup
+terraform/tfplan
+
 # OS
 .DS_Store
 Thumbs.db

@@ -1,4 +1,4 @@
-# 🗣️ Communication English AI
+# 🗣️ Communication English AI — POC v1.1
 
 An AI-powered English communication improvement platform — from absolute beginner to IELTS Band 9.
 
