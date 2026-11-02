@@ -35,17 +35,6 @@ jobs:
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
 
-      - name: Enable required APIs
-        run: |
-          gcloud services enable \
-            run.googleapis.com \
-            artifactregistry.googleapis.com \
-            speech.googleapis.com \
-            texttospeech.googleapis.com \
-            vision.googleapis.com \
-            secretmanager.googleapis.com \
-            --project=${{ env.PROJECT_ID }}
-
       - name: Create Artifact Registry repo if not exists
         run: |
           gcloud artifacts repositories describe english-ai \
