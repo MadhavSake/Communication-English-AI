@@ -2,14 +2,14 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Install dependencies
+# Install dependencies first (cached layer)
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
-# Copy source
+# Copy source code
 COPY . .
 
-# Cloud Run uses PORT env variable
 ENV PORT=8080
 EXPOSE 8080
 
