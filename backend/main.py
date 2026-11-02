@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import grammar, audio, vision, content, chat
 import os
 
 app = FastAPI(
@@ -9,24 +8,27 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# CORS - allow frontend to talk to backend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Restrict in production
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Register routers
-app.include_router(grammar.router, prefix="/api/grammar", tags=["Grammar"])
-app.include_router(audio.router,   prefix="/api/audio",   tags=["Audio"])
-app.include_router(vision.router,  prefix="/api/vision",  tags=["Vision"])
-app.include_router(content.router, prefix="/api/content", tags=["Content"])
-app.include_router(chat.router,    prefix="/api/chat",    tags=["Chat"])
+# Import routers safely
+try:
+    from routers import grammar, audio, vision, content, chat
+    app.include_router(grammar.router, prefix="/api/grammar", tags=["Grammar"])
+    app.include_router(audio.router,   prefix="/api/audio",   tags=["Audio"])
+    app.include_router(vision.router,  prefix="/api/vision",  tags=["Vision"])
+    app.include_router(content.router, prefix="/api/content", tags=["Content"])
+    app.include_router(chat.router,    prefix="/api/chat",    tags=["Chat"])
+except Exception as e:
+    print(f"Warning: Could not load some routers: {e}")
 
 @app.get("/")
-def health_check():
+def root():
     return {"status": "ok", "message": "Communication English AI backend is running!"}
 
 @app.get("/health")
