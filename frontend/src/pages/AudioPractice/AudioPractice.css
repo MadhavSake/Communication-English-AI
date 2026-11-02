@@ -1,0 +1,123 @@
+.audio-practice { max-width: 1100px; }
+
+.audio-layout {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.recording-section h2,
+.result-card h2 { font-size: 18px; font-weight: 700; color: #f1f5f9; margin-bottom: 6px; }
+.hint { font-size: 13px; color: #64748b; margin-bottom: 24px; }
+
+/* Recorder UI */
+.recorder-ui { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+
+.recording-indicator {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.pulse-ring {
+  width: 60px; height: 60px; border-radius: 50%;
+  background: rgba(239,68,68,0.2);
+  border: 3px solid #ef4444;
+  animation: pulse 1s infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%       { transform: scale(1.15); opacity: 0.7; }
+}
+.timer { font-size: 22px; font-weight: 700; color: #ef4444; font-variant-numeric: tabular-nums; }
+
+.btn-record {
+  background: linear-gradient(135deg, #dc2626, #ef4444);
+  color: white; border: none;
+  padding: 16px 32px; border-radius: 50px;
+  font-size: 16px; font-weight: 600;
+  cursor: pointer; transition: transform 0.1s;
+  font-family: 'Inter', sans-serif;
+}
+.btn-record:hover { transform: scale(1.04); }
+
+.btn-stop {
+  background: #2d2d3d; color: #f87171;
+  border: 2px solid #ef4444;
+  padding: 14px 28px; border-radius: 50px;
+  font-size: 16px; font-weight: 600;
+  cursor: pointer; font-family: 'Inter', sans-serif;
+}
+
+.audio-preview {
+  display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%;
+}
+.audio-preview audio { width: 100%; }
+
+.face-toggle { margin-top: 16px; }
+.webcam-section { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 12px; }
+
+/* Results */
+.results-section { display: flex; flex-direction: column; gap: 20px; }
+
+.transcript-box {
+  background: #13131f; border-radius: 10px; padding: 14px;
+  margin-bottom: 16px;
+}
+.transcript-label { font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 6px; }
+.transcript-text  { font-size: 15px; color: #e2e8f0; font-style: italic; line-height: 1.6; }
+.confidence { font-size: 12px; color: #6366f1; margin-top: 6px; }
+
+.scores-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+  margin-bottom: 16px;
+}
+.score-item { text-align: center; }
+.score-circle {
+  width: 60px; height: 60px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 700; margin: 0 auto 6px;
+}
+.score-circle.score-good   { background: #14532d; color: #4ade80; border: 2px solid #16a34a; }
+.score-circle.score-medium { background: #713f12; color: #fbbf24; border: 2px solid #d97706; }
+.score-circle.score-low    { background: #7f1d1d; color: #f87171; border: 2px solid #dc2626; }
+.score-name { font-size: 12px; color: #94a3b8; }
+
+.ielts-band {
+  background: linear-gradient(135deg,#1e1b4b,#2d1b69);
+  border: 1px solid #4338ca;
+  border-radius: 10px; padding: 10px 14px;
+  font-size: 14px; color: #a78bfa; margin-bottom: 12px;
+}
+.ielts-band strong { color: #fff; }
+
+.feedback-text { font-size: 14px; color: #94a3b8; line-height: 1.6; margin-bottom: 12px; }
+
+.feedback-list { margin-bottom: 12px; }
+.fl-title { font-size: 13px; font-weight: 600; color: #e2e8f0; margin-bottom: 6px; }
+.fl-item  { font-size: 13px; padding: 6px 10px; border-radius: 8px; margin-bottom: 4px; }
+.fl-item.good { background: #14532d22; color: #4ade80; }
+.fl-item.tip  { background: #1e1b4b; color: #a78bfa; }
+
+.filler-warning {
+  background: #7f1d1d22; border: 1px solid #dc2626;
+  border-radius: 8px; padding: 10px 12px;
+  font-size: 13px; color: #f87171;
+}
+
+.smile-badge {
+  text-align: center; font-size: 16px; font-weight: 600;
+  padding: 12px; margin: 12px 0;
+  background: #1e1e2e; border-radius: 10px; color: #e2e8f0;
+}
+
+.error-msg { color: #f87171; font-size: 14px; }
+
+.empty-state {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 12px;
+  min-height: 200px; text-align: center; color: #64748b;
+}
+
+@media (max-width: 900px) {
+  .audio-layout { grid-template-columns: 1fr; }
+  .scores-grid  { grid-template-columns: repeat(2,1fr); }
+}
