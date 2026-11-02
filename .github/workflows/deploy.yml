@@ -14,50 +14,10 @@ env:
   REGISTRY: asia-south1-docker.pkg.dev
 
 jobs:
-  # ── 1. Terraform — Infrastructure ────────────────────────
-  terraform:
-    name: Terraform — Provision GCP Infrastructure
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Authenticate to GCP (Keyless)
-        uses: google-github-actions/auth@v2
-        with:
-          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
-
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-        with:
-          terraform_version: "1.7.0"
-
-      - name: Terraform Init
-        run: terraform init
-        working-directory: ./terraform
-
-      - name: Terraform Plan
-        run: |
-          terraform plan \
-            -var="gemini_api_key=${{ secrets.GEMINI_API_KEY }}" \
-            -out=tfplan
-        working-directory: ./terraform
-
-      - name: Terraform Apply
-        if: github.ref == 'refs/heads/main'
-        run: terraform apply -auto-approve tfplan
-        working-directory: ./terraform
-
-  # ── 2. Backend — Build & Deploy ──────────────────────────
+  # ── 1. Backend — Build & Deploy ──────────────────────────
   deploy-backend:
     name: Deploy Backend to Cloud Run
     runs-on: ubuntu-latest
-    needs: terraform
     permissions:
       contents: read
       id-token: write
@@ -75,6 +35,26 @@ jobs:
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
 
+      - name: Enable required APIs
+        run: |
+          gcloud services enable \
+            run.googleapis.com \
+            artifactregistry.googleapis.com \
+            speech.googleapis.com \
+            texttospeech.googleapis.com \
+            vision.googleapis.com \
+            secretmanager.googleapis.com \
+            --project=${{ env.PROJECT_ID }}
+
+      - name: Create Artifact Registry repo if not exists
+        run: |
+          gcloud artifacts repositories describe english-ai \
+            --location=${{ env.REGION }} --project=${{ env.PROJECT_ID }} 2>/dev/null \
+          || gcloud artifacts repositories create english-ai \
+            --repository-format=docker \
+            --location=${{ env.REGION }} \
+            --project=${{ env.PROJECT_ID }}
+
       - name: Configure Docker
         run: gcloud auth configure-docker ${{ env.REGISTRY }} --quiet
 
@@ -83,9 +63,6 @@ jobs:
           IMAGE=${{ env.REGISTRY }}/${{ env.PROJECT_ID }}/english-ai/${{ env.BACKEND_SERVICE }}:${{ github.sha }}
           docker build -t $IMAGE ./backend
           docker push $IMAGE
-          # Also tag as latest
-          docker tag $IMAGE ${{ env.REGISTRY }}/${{ env.PROJECT_ID }}/english-ai/${{ env.BACKEND_SERVICE }}:latest
-          docker push ${{ env.REGISTRY }}/${{ env.PROJECT_ID }}/english-ai/${{ env.BACKEND_SERVICE }}:latest
 
       - name: Deploy Backend to Cloud Run
         run: |
@@ -99,7 +76,7 @@ jobs:
             --cpu=1 \
             --min-instances=0 \
             --max-instances=3 \
-            --set-secrets="GEMINI_API_KEY=gemini-api-key:latest" \
+            --set-env-vars="GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}" \
             --project=${{ env.PROJECT_ID }}
 
       - name: Get Backend URL
@@ -115,7 +92,7 @@ jobs:
     outputs:
       backend_url: ${{ steps.backend-url.outputs.url }}
 
-  # ── 3. Frontend — Build & Deploy ─────────────────────────
+  # ── 2. Frontend — Build & Deploy ─────────────────────────
   deploy-frontend:
     name: Deploy Frontend to Cloud Run
     runs-on: ubuntu-latest
@@ -161,8 +138,6 @@ jobs:
           IMAGE=${{ env.REGISTRY }}/${{ env.PROJECT_ID }}/english-ai/${{ env.FRONTEND_SERVICE }}:${{ github.sha }}
           docker build -t $IMAGE ./frontend
           docker push $IMAGE
-          docker tag $IMAGE ${{ env.REGISTRY }}/${{ env.PROJECT_ID }}/english-ai/${{ env.FRONTEND_SERVICE }}:latest
-          docker push ${{ env.REGISTRY }}/${{ env.PROJECT_ID }}/english-ai/${{ env.FRONTEND_SERVICE }}:latest
 
       - name: Deploy Frontend to Cloud Run
         run: |
@@ -178,15 +153,15 @@ jobs:
             --max-instances=2 \
             --project=${{ env.PROJECT_ID }}
 
-      - name: Print Frontend URL 🎉
+      - name: 🎉 Print URLs
         run: |
           URL=$(gcloud run services describe ${{ env.FRONTEND_SERVICE }} \
             --region=${{ env.REGION }} \
             --project=${{ env.PROJECT_ID }} \
             --format="value(status.url)")
-          echo "🎉 Frontend Live at: $URL"
+          echo "🎉 Frontend: $URL"
           echo "### 🚀 Deployment Complete!" >> $GITHUB_STEP_SUMMARY
           echo "| Service | URL |" >> $GITHUB_STEP_SUMMARY
           echo "|---------|-----|" >> $GITHUB_STEP_SUMMARY
-          echo "| Frontend | $URL |" >> $GITHUB_STEP_SUMMARY
-          echo "| Backend | ${{ needs.deploy-backend.outputs.backend_url }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🌐 Frontend | [$URL]($URL) |" >> $GITHUB_STEP_SUMMARY
+          echo "| ⚙️ Backend | [${{ needs.deploy-backend.outputs.backend_url }}](${{ needs.deploy-backend.outputs.backend_url }}) |" >> $GITHUB_STEP_SUMMARY
