@@ -37,15 +37,6 @@ jobs:
         with:
           terraform_version: "1.7.0"
 
-      - name: Verify Terraform state bucket exists
-        run: |
-          gcloud storage buckets describe gs://madhav-test-471011-tfstate \
-            --project=madhav-test-471011 || \
-          gcloud storage buckets create gs://madhav-test-471011-tfstate \
-            --project=madhav-test-471011 \
-            --location=asia-south1 \
-            --uniform-bucket-level-access
-
       - name: Terraform Init
         run: terraform init
         working-directory: ./terraform
