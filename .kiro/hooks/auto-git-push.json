@@ -1,0 +1,14 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Auto Git Push on File Save",
+      "trigger": "PostFileSave",
+      "description": "Automatically commit and push to GitHub whenever a file is saved in the workspace",
+      "action": {
+        "type": "command",
+        "command": "cd \"c:\\Users\\Madhav Sake\\Downloads\\English AI App\" && git add -A && git diff --cached --quiet || git commit -m \"auto: update code\" && git push origin main"
+      }
+    }
+  ]
+}
