@@ -73,11 +73,14 @@ that would fail).
 |--------|-------------|
 | `GCP_WORKLOAD_IDENTITY_PROVIDER` | Full WIF provider resource name |
 | `GCP_SERVICE_ACCOUNT` | Deployer SA email (`english-ai-deployer@<project>.iam.gserviceaccount.com`) |
+| `GEMINI_API_KEY` | Google AI Studio API key (passed to Cloud Run as an env var) |
 
-The Gemini key lives in Secret Manager (`gemini-api-key`), not in GitHub.
+TODO: once the Terraform runtime SA and `gemini-api-key` secret exist, switch the
+backend deploy to `--service-account=english-ai-runtime@...` and
+`--set-secrets=GEMINI_API_KEY=gemini-api-key:latest` instead of the plain env var.
 
 ## Deploy
 
 Push to `main` (or run the workflow manually) → GitHub Actions:
-- Backend → Cloud Run `english-ai-backend` (runtime SA `english-ai-runtime`)
+- Backend → Cloud Run `english-ai-backend`
 - Frontend → Cloud Run `english-ai-frontend`, built with the backend URL baked in
