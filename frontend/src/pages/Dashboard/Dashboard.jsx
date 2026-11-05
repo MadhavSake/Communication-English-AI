@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { currentStage, stageName, CORE_STAGES } from '../../stages';
 import { useNavigate } from 'react-router-dom';
 import { getDailyPrompt, getAllLevels } from '../../services/api';
 import './Dashboard.css';
@@ -14,14 +15,14 @@ const modules = [
 
 export default function Dashboard() {
   const navigate = useNavigate();
-  const [level, setLevel]             = useState(parseInt(localStorage.getItem('userLevel') || '1'));
+  const [level, setLevel]             = useState(currentStage());
   const [dailyPrompt, setDailyPrompt] = useState(null);
   const [loading, setLoading]         = useState(false);
 
   useEffect(() => {
     fetchDailyPrompt(level);
     const handler = () => {
-      const newLevel = parseInt(localStorage.getItem('userLevel') || '1');
+      const newLevel = currentStage();
       setLevel(newLevel);
       fetchDailyPrompt(newLevel);
     };
@@ -41,12 +42,6 @@ export default function Dashboard() {
     }
   };
 
-  const levelNames = {
-    1:'Absolute Beginner',2:'Beginner',3:'Elementary',4:'Pre-Intermediate',
-    5:'Intermediate',6:'Upper-Intermediate',7:'Advanced',
-    8:'IELTS 5.5',9:'IELTS 6.0',10:'IELTS 6.5',11:'IELTS 7.0',
-    12:'IELTS 7.5',13:'IELTS 8.0',14:'IELTS 8.5',15:'IELTS 9.0',
-  };
 
   return (
     <div className="dashboard">
@@ -57,8 +52,8 @@ export default function Dashboard() {
           <p>Ready to improve your English today?</p>
         </div>
         <div className="level-badge">
-          <span className="level-num">Level {level}</span>
-          <span className="level-name">{levelNames[level]}</span>
+          <span className="level-num">Stage {level}</span>
+          <span className="level-name">{stageName(level)}</span>
         </div>
       </div>
 
@@ -72,16 +67,16 @@ export default function Dashboard() {
         <div className="stat-card">
           <div className="stat-icon">⭐</div>
           <div className="stat-value">{level}</div>
-          <div className="stat-label">Current Level</div>
+          <div className="stat-label">Current Stage</div>
         </div>
         <div className="stat-card">
           <div className="stat-icon">🎯</div>
-          <div className="stat-value">{15 - level}</div>
-          <div className="stat-label">Levels to Go</div>
+          <div className="stat-value">{Math.max(0, CORE_STAGES - level)}</div>
+          <div className="stat-label">Core Stages to Go</div>
         </div>
         <div className="stat-card">
           <div className="stat-icon">📈</div>
-          <div className="stat-value">{Math.round((level / 15) * 100)}%</div>
+          <div className="stat-value">{Math.min(100, Math.round((level / CORE_STAGES) * 100))}%</div>
           <div className="stat-label">Overall Progress</div>
         </div>
       </div>

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { currentStage } from '../../stages';
 import { getVideos, getAudioContent } from '../../services/api';
 import './Videos.css';
 
 export default function Videos() {
-  const [level]    = useState(parseInt(localStorage.getItem('userLevel') || '1'));
+  const [level]    = useState(currentStage());
   const [videos, setVideos]   = useState([]);
   const [audios, setAudios]   = useState([]);
   const [tab, setTab]         = useState('videos');
@@ -17,7 +18,7 @@ export default function Videos() {
     <div className="videos-page">
       <div className="page-header">
         <h1>🎬 Videos & Audio</h1>
-        <p>Curated content for Level {level}</p>
+        <p>Curated content for Stage {level}</p>
       </div>
 
       <div className="tab-row">

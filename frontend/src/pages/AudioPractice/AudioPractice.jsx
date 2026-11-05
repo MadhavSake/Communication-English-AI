@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { currentStage } from '../../stages';
 import { recordActivity } from '../../services/progress';
 import Webcam from 'react-webcam';
 import { analyzeAudio, analyzeFaceBase64 } from '../../services/api';
 import './AudioPractice.css';
 
 export default function AudioPractice() {
-  const [level]          = useState(parseInt(localStorage.getItem('userLevel') || '1'));
+  const [level]          = useState(currentStage());
   const [recording, setRecording]   = useState(false);
   const [audioBlob, setAudioBlob]   = useState(null);
   const [result, setResult]         = useState(null);
@@ -89,7 +90,7 @@ export default function AudioPractice() {
         {/* Left: Recording */}
         <div className="recording-section card">
           <h2>Record Your Speech</h2>
-          <p className="hint">Level {level} — Speak clearly into your microphone</p>
+          <p className="hint">Stage {level} — Speak clearly into your microphone</p>
 
           <div className="recorder-ui">
             {recording && (

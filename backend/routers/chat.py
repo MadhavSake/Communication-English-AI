@@ -39,12 +39,12 @@ async def get_scenarios():
     """Get available conversation scenarios."""
     return {
         "scenarios": [
-            {"id": "general", "name": "General Conversation", "icon": "💬", "levels": "1-15"},
-            {"id": "interview", "name": "Job Interview", "icon": "💼", "levels": "5-15"},
-            {"id": "travel", "name": "Travel & Tourism", "icon": "✈️", "levels": "2-10"},
-            {"id": "shopping", "name": "Shopping", "icon": "🛍️", "levels": "1-5"},
-            {"id": "formal", "name": "Formal Meeting", "icon": "🤝", "levels": "7-15"},
-            {"id": "ielts_speaking", "name": "IELTS Speaking Test", "icon": "🎓", "levels": "8-15"},
-            {"id": "debate", "name": "Debate & Discussion", "icon": "🗣️", "levels": "10-15"},
+            {"id": "general", "name": "General Conversation", "icon": "💬", "levels": "1-12"},
+            {"id": "interview", "name": "Job Interview", "icon": "💼", "levels": "6-12"},
+            {"id": "travel", "name": "Travel & Tourism", "icon": "✈️", "levels": "2-6"},
+            {"id": "shopping", "name": "Shopping", "icon": "🛍️", "levels": "1-4"},
+            {"id": "formal", "name": "Formal Meeting", "icon": "🤝", "levels": "9-12"},
+            {"id": "ielts_speaking", "name": "IELTS Speaking Test", "icon": "🎓", "levels": "7-8"},
+            {"id": "debate", "name": "Debate & Discussion", "icon": "🗣️", "levels": "11-12"},
         ]
     }

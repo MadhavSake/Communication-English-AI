@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { STAGES, currentStage } from '../stages';
 import { useAuth } from '../auth/AuthContext';
 import { saveLevel } from '../services/progress';
 import { NavLink } from 'react-router-dom';
@@ -17,7 +18,7 @@ const navItems = [
 export default function Sidebar() {
   const { user, logout } = useAuth();
   const [level, setLevel] = useState(
-    parseInt(localStorage.getItem('userLevel') || '1')
+    currentStage()
   );
 
   const handleLevelChange = (e) => {
@@ -30,7 +31,7 @@ export default function Sidebar() {
 
   // Pick up the level loaded from the user's profile after login
   useEffect(() => {
-    const sync = () => setLevel(parseInt(localStorage.getItem('userLevel') || '1'));
+    const sync = () => setLevel(currentStage());
     window.addEventListener('levelChanged', sync);
     return () => window.removeEventListener('levelChanged', sync);
   }, []);
@@ -48,23 +49,13 @@ export default function Sidebar() {
 
       {/* Level Selector */}
       <div className="level-selector">
-        <label>Your Level</label>
+        <label>Your Stage</label>
         <select value={level} onChange={handleLevelChange}>
-          <option value={1}>Level 1 — Absolute Beginner</option>
-          <option value={2}>Level 2 — Beginner</option>
-          <option value={3}>Level 3 — Elementary</option>
-          <option value={4}>Level 4 — Pre-Intermediate</option>
-          <option value={5}>Level 5 — Intermediate</option>
-          <option value={6}>Level 6 — Upper-Intermediate</option>
-          <option value={7}>Level 7 — Advanced</option>
-          <option value={8}>Level 8 — IELTS 5.5</option>
-          <option value={9}>Level 9 — IELTS 6.0</option>
-          <option value={10}>Level 10 — IELTS 6.5</option>
-          <option value={11}>Level 11 — IELTS 7.0</option>
-          <option value={12}>Level 12 — IELTS 7.5</option>
-          <option value={13}>Level 13 — IELTS 8.0</option>
-          <option value={14}>Level 14 — IELTS 8.5</option>
-          <option value={15}>Level 15 — IELTS 9.0</option>
+          {STAGES.map((st) => (
+            <option key={st.n} value={st.n}>
+              Stage {st.n} — {st.name}{st.optional ? ' (optional)' : ''}
+            </option>
+          ))}
         </select>
       </div>
 

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { currentStage } from '../../stages';
 import { getBooks } from '../../services/api';
 import './Books.css';
 
 export default function Books() {
-  const [level]   = useState(parseInt(localStorage.getItem('userLevel') || '1'));
+  const [level]   = useState(currentStage());
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
@@ -14,7 +15,7 @@ export default function Books() {
     <div className="books-page">
       <div className="page-header">
         <h1>📖 Books to Read</h1>
-        <p>Curated reading list for Level {level}</p>
+        <p>Curated reading list for Stage {level}</p>
       </div>
 
       <div className="books-grid">

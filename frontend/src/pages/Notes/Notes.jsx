@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import { currentStage } from '../../stages';
+import LessonView from '../../components/LessonView';
 import { recordActivity } from '../../services/progress';
 import { getNotes, getLevelInfo } from '../../services/api';
 import { checkGrammar } from '../../services/api';
 import './Notes.css';
 
 export default function Notes() {
-  const [level]     = useState(parseInt(localStorage.getItem('userLevel') || '1'));
+  const [level]     = useState(currentStage());
   const [notes, setNotes]       = useState([]);
   const [levelInfo, setLevelInfo] = useState(null);
   const [text, setText]         = useState('');
   const [result, setResult]     = useState(null);
   const [loading, setLoading]   = useState(false);
+  const [open, setOpen]         = useState(null);
 
   useEffect(() => {
     getNotes(level).then((r) => setNotes(r.data.notes)).catch(() => {});
@@ -35,35 +38,47 @@ export default function Notes() {
     <div className="notes-page">
       <div className="page-header">
         <h1>📚 Notes</h1>
-        <p>Level {level} study material — {levelInfo?.focus}</p>
+        <p>Stage {level} modules — {levelInfo?.focus}</p>
       </div>
 
       {levelInfo && (
         <div className="level-banner">
-          <div className="lb-level">Level {level}</div>
+          <div className="lb-level">Stage {level}</div>
           <div className="lb-info">
             <div className="lb-name">{levelInfo.name}</div>
             <div className="lb-focus">{levelInfo.focus}</div>
           </div>
-          {levelInfo.ielts_band && (
-            <div className="lb-band">🎓 IELTS {levelInfo.ielts_band}</div>
-          )}
+          <div className="lb-band">📖 {levelInfo.vocab_target?.toLocaleString()} words target</div>
         </div>
       )}
 
       {/* Notes Cards */}
       <div className="notes-grid">
         {notes.map((note, i) => (
-          <div key={i} className="note-card card">
+          <div key={i} className={`note-card card ${open === i ? 'open' : ''}`}
+            role="button" tabIndex={0}
+            onClick={() => setOpen(open === i ? null : i)}
+            onKeyDown={(e) => { if (e.key === 'Enter') setOpen(open === i ? null : i); }}>
             <div className="note-header">
               <span className="note-num">{i + 1}</span>
-              <span className="note-duration">⏱ {note.duration}</span>
+              <span className="note-duration">Module {note.module || i + 1}</span>
             </div>
             <h3>{note.title}</h3>
             <p>{note.content}</p>
+            {note.outcome && <p className="note-outcome">🎯 {note.outcome}</p>}
           </div>
         ))}
       </div>
+
+      {open !== null && notes[open] && (
+        <LessonView
+          stage={level}
+          module={notes[open].module || open + 1}
+          title={notes[open].title}
+          topics={notes[open].content}
+          onClose={() => setOpen(null)}
+        />
+      )}
 
       {/* Grammar Practice Box */}
       <div className="grammar-box card">

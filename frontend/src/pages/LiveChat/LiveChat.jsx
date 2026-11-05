@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { currentStage } from '../../stages';
 import { recordActivity } from '../../services/progress';
 import { sendChatMessage, getChatScenarios } from '../../services/api';
 import './LiveChat.css';
 
 export default function LiveChat() {
-  const [level]       = useState(parseInt(localStorage.getItem('userLevel') || '1'));
+  const [level]       = useState(currentStage());
   const [scenarios, setScenarios]   = useState([]);
   const [scenario, setScenario]     = useState('general');
   const [messages, setMessages]     = useState([]);
@@ -16,7 +17,7 @@ export default function LiveChat() {
     getChatScenarios().then((r) => setScenarios(r.data.scenarios)).catch(() => {});
     setMessages([{
       role: 'model',
-      text: `Hi there! 👋 I'm your English conversation partner. Let's practice together at Level ${level}. What would you like to talk about?`,
+      text: `Hi there! 👋 I'm your English conversation partner. Let's practice together at Stage ${level}. What would you like to talk about?`,
     }]);
   }, []);
 
@@ -77,14 +78,14 @@ export default function LiveChat() {
                 <span>{s.icon}</span>
                 <div>
                   <div className="scenario-name">{s.name}</div>
-                  <div className="scenario-levels">Levels {s.levels}</div>
+                  <div className="scenario-levels">Stages {s.levels}</div>
                 </div>
               </button>
             ))}
           </div>
           <div className="level-info">
-            <div className="li-label">Your Level</div>
-            <div className="li-value">Level {level}</div>
+            <div className="li-label">Your Stage</div>
+            <div className="li-value">Stage {level}</div>
           </div>
         </div>
 

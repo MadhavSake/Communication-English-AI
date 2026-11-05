@@ -1,6 +1,7 @@
 import google.generativeai as genai
 import os
 from dotenv import load_dotenv
+from services.syllabus import describe
 
 load_dotenv()
 
@@ -13,7 +14,7 @@ model = genai.GenerativeModel(GEMINI_MODEL)
 def check_grammar(text: str, level: int) -> dict:
     """Analyze grammar, fluency and suggest improvements."""
     prompt = f"""
-    You are an English teacher helping a Level {level} student (1=beginner, 15=IELTS expert).
+    You are an English teacher helping a learner at {describe(level)}.
     
     Analyze this text: "{text}"
     
@@ -43,7 +44,7 @@ def check_grammar(text: str, level: int) -> dict:
 def improve_sentence(text: str, level: int) -> dict:
     """Suggest improved version of a sentence."""
     prompt = f"""
-    You are helping a Level {level} English learner improve their sentence.
+    You are helping an English learner at {describe(level)} improve their sentence.
     Original: "{text}"
     
     Provide 3 improved versions suitable for their level.
@@ -67,24 +68,7 @@ def improve_sentence(text: str, level: int) -> dict:
 
 def get_daily_prompt(level: int) -> dict:
     """Get a daily speaking/writing practice prompt for the level."""
-    level_descriptions = {
-        1: "absolute beginner (knows basic words)",
-        2: "beginner (can make simple sentences)",
-        3: "elementary (learning tenses and grammar)",
-        4: "pre-intermediate",
-        5: "intermediate",
-        6: "upper-intermediate",
-        7: "advanced",
-        8: "IELTS preparation band 4.5",
-        9: "IELTS preparation band 5.0",
-        10: "IELTS preparation band 5.5",
-        11: "IELTS preparation band 6.0",
-        12: "IELTS preparation band 6.5",
-        13: "IELTS preparation band 7.0",
-        14: "IELTS preparation band 7.5-8.0",
-        15: "IELTS preparation band 8.5-9.0",
-    }
-    desc = level_descriptions.get(level, "intermediate learner")
+    desc = describe(level)
     prompt = f"""
     Create a daily English practice prompt for a {desc} student.
     Respond in JSON:
@@ -109,7 +93,7 @@ def get_daily_prompt(level: int) -> dict:
 def analyze_audio_transcript(transcript: str, level: int) -> dict:
     """Deep analysis of spoken English from transcript."""
     prompt = f"""
-    Analyze this spoken English transcript from a Level {level} student:
+    Analyze this spoken English transcript from a learner at {describe(level)}:
     "{transcript}"
     
     Respond in JSON:
@@ -140,13 +124,14 @@ def analyze_audio_transcript(transcript: str, level: int) -> dict:
 def chat_with_ai(message: str, history: list, level: int, scenario: str = "general") -> str:
     """AI conversation partner for practice."""
     system_context = f"""
-    You are a friendly English conversation partner helping a Level {level} student practice.
+    You are a friendly English conversation partner helping a learner at {describe(level)} practice.
     Scenario: {scenario}
     - Keep responses appropriate for their level
     - Gently correct major mistakes inline
     - Be encouraging and supportive
-    - If level 1-3, use simple words
-    - If level 8-15, use IELTS-style language
+    - Stages 1-3: use very simple words and short sentences
+    - Stages 7-8: use IELTS-style language
+    - Stages 9-12: use professional and business English
     """
     chat_model = genai.GenerativeModel(GEMINI_MODEL, system_instruction=system_context)
     recent = history[-6:]  # Keep last 6 messages for context

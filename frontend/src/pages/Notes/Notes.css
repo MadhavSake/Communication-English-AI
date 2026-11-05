@@ -85,3 +85,9 @@
   .notes-grid { grid-template-columns: 1fr; }
   .level-banner { flex-wrap: wrap; }
 }
+
+.note-outcome {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #a78bfa;
+}

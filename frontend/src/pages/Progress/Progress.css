@@ -59,3 +59,7 @@
   .summary-grid  { grid-template-columns: repeat(2,1fr); }
   .progress-layout { grid-template-columns: 1fr; }
 }
+
+.level-dot.optional {
+  border-style: dashed;
+}

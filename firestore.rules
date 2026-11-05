@@ -5,5 +5,10 @@ service cloud.firestore {
     match /users/{uid} {
       allow read, write: if request.auth != null && request.auth.uid == uid;
     }
+    // Lessons are read-only for signed-in users; they are written by scripts/generate_lessons.py.
+    match /lessons/{lessonId} {
+      allow read: if request.auth != null;
+      allow write: if false;
+    }
   }
 }

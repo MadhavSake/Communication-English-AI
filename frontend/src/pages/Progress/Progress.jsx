@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { STAGES, CORE_STAGES, currentStage, stageName } from '../../stages';
 import { loadProgress, average, streak, lastSevenDays } from '../../services/progress';
 import './Progress.css';
 
 export default function Progress() {
-  const [level] = useState(parseInt(localStorage.getItem('userLevel') || '1'));
+  const [level] = useState(currentStage());
 
   const [data, setData] = useState(null);
   useEffect(() => { loadProgress().then(setData).catch(() => {}); }, []);
@@ -35,8 +36,8 @@ export default function Progress() {
         <div className="summary-card card">
           <div className="sc-icon">🏆</div>
           <div className="sc-value">{level}</div>
-          <div className="sc-label">Current Level</div>
-          <div className="sc-sub">of 15</div>
+          <div className="sc-label">Current Stage</div>
+          <div className="sc-sub">{stageName(level)}</div>
         </div>
         <div className="summary-card card">
           <div className="sc-icon">🔥</div>
@@ -52,9 +53,9 @@ export default function Progress() {
         </div>
         <div className="summary-card card">
           <div className="sc-icon">🎯</div>
-          <div className="sc-value">{Math.round((level / 15) * 100)}%</div>
+          <div className="sc-value">{Math.min(100, Math.round((level / CORE_STAGES) * 100))}%</div>
           <div className="sc-label">Overall Progress</div>
-          <div className="sc-sub">to Level 15</div>
+          <div className="sc-sub">of {CORE_STAGES} core stages</div>
         </div>
       </div>
 
@@ -105,13 +106,13 @@ export default function Progress() {
 
       {/* Level Progress */}
       <div className="level-progress-card card">
-        <h2>Level Journey (1 → 15)</h2>
+        <h2>Stage Journey (1 → 10, plus optional 11–12)</h2>
         <div className="level-track">
-          {Array.from({ length: 15 }, (_, i) => i + 1).map((l) => (
+          {STAGES.map(({ n: l, name, optional }) => (
             <div
               key={l}
-              className={`level-dot ${l < level ? 'done' : l === level ? 'current' : 'upcoming'}`}
-              title={`Level ${l}`}
+              className={`level-dot ${l < level ? 'done' : l === level ? 'current' : 'upcoming'}${optional ? ' optional' : ''}`}
+              title={`Stage ${l} — ${name}${optional ? ' (optional)' : ''}`}
             >
               {l}
             </div>
@@ -119,8 +120,9 @@ export default function Progress() {
         </div>
         <div className="level-track-labels">
           <span>Beginner</span>
-          <span>Intermediate</span>
-          <span>IELTS 9.0</span>
+          <span>IELTS</span>
+          <span>Business</span>
+          <span>Public Speaking ⭐</span>
         </div>
       </div>
     </div>
