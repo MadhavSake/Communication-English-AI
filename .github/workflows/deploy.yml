@@ -107,8 +107,8 @@ jobs:
 
       - name: Build & Push Frontend image
         env:
-          # Firebase web config (public, not a secret) — repo Variable FIREBASE_CONFIG
-          FIREBASE_CONFIG: ${{ vars.FIREBASE_CONFIG }}
+          # Firebase web config — repo Variable or Secret named FIREBASE_CONFIG
+          FIREBASE_CONFIG: ${{ vars.FIREBASE_CONFIG || secrets.FIREBASE_CONFIG }}
         run: |
           IMAGE=${{ env.REGISTRY }}/${{ env.PROJECT_ID }}/english-ai/${{ env.FRONTEND_SERVICE }}:${{ github.sha }}
           docker build \

@@ -6,9 +6,13 @@ import { getFirestore } from 'firebase/firestore';
 // console. Accept strict JSON or the console's JS-object snippet as-is.
 function parseConfig(raw) {
   if (!raw) return null;
-  let s = raw.trim()
-    .replace(/^[^{]*/, '')          // drop "const firebaseConfig ="
-    .replace(/;?\s*$/, '');         // drop trailing ";"
+  // If the whole console snippet (imports, initializeApp…) was pasted,
+  // keep only the object assigned to firebaseConfig.
+  let s = raw.trim();
+  const at = s.indexOf('firebaseConfig');
+  const start = s.indexOf('{', at >= 0 ? at : 0);
+  const end = s.indexOf('}', start);
+  if (start >= 0 && end > start) s = s.slice(start, end + 1);
   try { return JSON.parse(s); } catch (_) { /* fall through */ }
   s = s
     .replace(/(^|[^:"'])\/\/.*$/gm, '$1')              // line comments (not https://)
