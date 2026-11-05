@@ -11,6 +11,7 @@ env:
   BACKEND_SERVICE: english-ai-backend
   FRONTEND_SERVICE: english-ai-frontend
   REGISTRY: asia-south1-docker.pkg.dev
+  FIREBASE_PROJECT: madhav-test-471011-c1d58
 
 jobs:
   # ── 1. Backend — Build & Deploy ──────────────────────────
@@ -143,3 +144,39 @@ jobs:
           echo "|---------|-----|" >> $GITHUB_STEP_SUMMARY
           echo "| 🌐 Frontend | [$URL]($URL) |" >> $GITHUB_STEP_SUMMARY
           echo "| ⚙️ Backend | [${{ needs.deploy-backend.outputs.backend_url }}](${{ needs.deploy-backend.outputs.backend_url }}) |" >> $GITHUB_STEP_SUMMARY
+
+  # ── 3. Firestore security rules (from firestore.rules) ───
+  deploy-firestore-rules:
+    name: Deploy Firestore rules
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Authenticate to GCP (Keyless)
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Publish rules
+        run: |
+          set -euo pipefail
+          API=https://firebaserules.googleapis.com/v1/projects/${{ env.FIREBASE_PROJECT }}
+          TOKEN=$(gcloud auth print-access-token)
+          BODY=$(jq -n --rawfile src firestore.rules '{source:{files:[{name:"firestore.rules",content:$src}]}}')
+          RULESET=$(curl -sS --fail-with-body -X POST "$API/rulesets" \
+            -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+            -d "$BODY" | jq -r .name)
+          echo "Created $RULESET"
+          curl -sS --fail-with-body -X PATCH "$API/releases/cloud.firestore" \
+            -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+            -d "{\"release\":{\"name\":\"projects/${{ env.FIREBASE_PROJECT }}/releases/cloud.firestore\",\"rulesetName\":\"$RULESET\"}}"
+          echo "✅ Firestore rules published"
