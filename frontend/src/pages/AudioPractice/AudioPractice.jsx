@@ -1,12 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { currentStage } from '../../stages';
+import { useStage } from '../../stages';
 import { recordActivity } from '../../services/progress';
 import Webcam from 'react-webcam';
 import { analyzeAudio, analyzeFaceBase64 } from '../../services/api';
 import './AudioPractice.css';
 
 export default function AudioPractice() {
-  const [level]          = useState(currentStage());
+  const level          = useStage();
   const [recording, setRecording]   = useState(false);
   const [audioBlob, setAudioBlob]   = useState(null);
   const [result, setResult]         = useState(null);

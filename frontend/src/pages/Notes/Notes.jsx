@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { currentStage } from '../../stages';
+import { useStage } from '../../stages';
 import LessonView from '../../components/LessonView';
 import { recordActivity } from '../../services/progress';
 import { getNotes, getLevelInfo } from '../../services/api';
@@ -7,7 +7,7 @@ import { checkGrammar } from '../../services/api';
 import './Notes.css';
 
 export default function Notes() {
-  const [level]     = useState(currentStage());
+  const level     = useStage();
   const [notes, setNotes]       = useState([]);
   const [levelInfo, setLevelInfo] = useState(null);
   const [text, setText]         = useState('');
@@ -19,6 +19,9 @@ export default function Notes() {
     getNotes(level).then((r) => setNotes(r.data.notes)).catch(() => {});
     getLevelInfo(level).then((r) => setLevelInfo(r.data)).catch(() => {});
   }, [level]);
+
+  // Close any open lesson when the stage changes
+  useEffect(() => { setOpen(null); }, [level]);
 
   const handleGrammarCheck = async () => {
     if (!text.trim()) return;

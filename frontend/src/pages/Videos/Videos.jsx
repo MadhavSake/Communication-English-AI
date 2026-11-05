@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { currentStage } from '../../stages';
+import { useStage } from '../../stages';
 import { getVideos, getAudioContent } from '../../services/api';
 import './Videos.css';
 
 export default function Videos() {
-  const [level]    = useState(currentStage());
+  const level    = useStage();
   const [videos, setVideos]   = useState([]);
   const [audios, setAudios]   = useState([]);
   const [tab, setTab]         = useState('videos');

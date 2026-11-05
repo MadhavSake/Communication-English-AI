@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { currentStage } from '../../stages';
+import { useStage } from '../../stages';
 import { recordActivity } from '../../services/progress';
 import { sendChatMessage, getChatScenarios } from '../../services/api';
 import './LiveChat.css';
 
 export default function LiveChat() {
-  const [level]       = useState(currentStage());
+  const level       = useStage();
   const [scenarios, setScenarios]   = useState([]);
   const [scenario, setScenario]     = useState('general');
   const [messages, setMessages]     = useState([]);

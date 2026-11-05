@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { STAGES, CORE_STAGES, currentStage, stageName } from '../../stages';
+import { STAGES, CORE_STAGES, useStage, stageName } from '../../stages';
 import { loadProgress, average, streak, lastSevenDays } from '../../services/progress';
 import './Progress.css';
 
 export default function Progress() {
-  const [level] = useState(currentStage());
+  const level = useStage();
 
   const [data, setData] = useState(null);
   useEffect(() => { loadProgress().then(setData).catch(() => {}); }, []);

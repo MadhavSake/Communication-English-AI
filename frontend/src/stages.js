@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 // Mirrors backend/content/syllabus.json (names only) so the UI renders instantly.
 export const STAGES = [
   { n: 1, name: 'Absolute Beginner' },
@@ -22,4 +24,19 @@ export const stageName = (n) => STAGES.find((s) => s.n === n)?.name || '';
 export function currentStage() {
   const v = parseInt(localStorage.getItem('userLevel') || '1', 10);
   return Math.min(Math.max(Number.isFinite(v) ? v : 1, 1), MAX_STAGE);
+}
+
+// Current stage that updates when the learner changes it in the sidebar.
+export function useStage() {
+  const [stage, setStage] = useState(currentStage);
+  useEffect(() => {
+    const sync = () => setStage(currentStage());
+    window.addEventListener('levelChanged', sync);
+    window.addEventListener('storage', sync);
+    return () => {
+      window.removeEventListener('levelChanged', sync);
+      window.removeEventListener('storage', sync);
+    };
+  }, []);
+  return stage;
 }

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { currentStage } from '../../stages';
+import { useStage } from '../../stages';
 import { getBooks } from '../../services/api';
 import './Books.css';
 
 export default function Books() {
-  const [level]   = useState(currentStage());
+  const level   = useStage();
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
