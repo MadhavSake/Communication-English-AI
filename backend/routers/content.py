@@ -74,3 +74,17 @@ async def get_audio(level: int):
 @router.get("/videos/{level}")
 async def get_videos(level: int):
     return {"level": get_stage(level)["stage"], "videos": _for_stage("videos", level)}
+
+
+_LESSON_DIR = Path(__file__).resolve().parent.parent / "content" / "lessons"
+
+
+@router.get("/lesson/{stage}/{module}")
+async def get_lesson(stage: int, module: int):
+    """Hand-written lessons shipped with the app (content/lessons/s{stage}-m{module}.json)."""
+    from fastapi import HTTPException
+    f = _LESSON_DIR / f"s{int(stage)}-m{int(module)}.json"
+    if not f.is_file():
+        raise HTTPException(status_code=404, detail="Lesson not available yet")
+    return json.loads(f.read_text(encoding="utf-8"))
+

@@ -50,6 +50,7 @@ export const getChatScenarios = () =>
 // Content APIs
 export const getAllLevels = () => api.get('/api/content/levels');
 export const getLevelInfo = (level) => api.get(`/api/content/levels/${level}`);
+export const getLesson = (stage, module) => api.get(`/api/content/lesson/${stage}/${module}`);
 export const getNotes = (level) => api.get(`/api/content/notes/${level}`);
 export const getBooks = (level) => api.get(`/api/content/books/${level}`);
 export const getAudioContent = (level) => api.get(`/api/content/audio/${level}`);

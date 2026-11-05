@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { recordActivity } from '../services/progress';
+import { getLesson } from '../services/api';
 import './LessonView.css';
 
 export default function LessonView({ stage, module, title, topics, onClose }) {
@@ -30,9 +31,14 @@ export default function LessonView({ stage, module, title, topics, onClose }) {
 
   useEffect(() => {
     setLesson(undefined); setAnswers({}); setSubmitted(false);
-    if (!db) { setLesson(null); return; }
-    getDoc(doc(db, 'lessons', `s${stage}-m${module}`))
-      .then((snap) => setLesson(snap.exists() ? snap.data() : null))
+    // Hand-written lessons shipped with the app take priority; then Firestore (generated).
+    const fromFirestore = () => (db
+      ? getDoc(doc(db, 'lessons', `s${stage}-m${module}`)).then((snap) => (snap.exists() ? snap.data() : null))
+      : Promise.resolve(null));
+    getLesson(stage, module)
+      .then((res) => res.data)
+      .catch(() => fromFirestore())
+      .then((data) => setLesson(data || null))
       .catch(() => setLesson(null));
   }, [stage, module]);
 

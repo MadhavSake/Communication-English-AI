@@ -1,0 +1,77 @@
+{
+  "stage": 1,
+  "module": 1,
+  "module_name": "Alphabet",
+  "title": "The English Alphabet: A to Z",
+  "summary": "English has 26 letters. Every letter has a capital form (A) and a small form (a). Letters join together to make words.",
+  "summary_hi": "English में 26 letters होते हैं। हर letter के दो रूप होते हैं — capital (A) और small (a)। Letters को जोड़कर ही words बनते हैं।",
+  "explanation": [
+    "The English alphabet has 26 letters, from A to Z. We use these 26 letters to write every English word.",
+    "Each letter has two forms. Capital letters (A, B, C) are big. Small letters (a, b, c) are also called lowercase letters. Most of the time we write in small letters.",
+    "We use a capital letter at the start of a sentence, for names of people and places (Ravi, Pune, India), and for the word 'I' when it means 'me'.",
+    "Five letters are vowels: A, E, I, O, U. The other 21 letters are consonants. Almost every English word has at least one vowel."
+  ],
+  "explanation_hi": [
+    "English alphabet में A से Z तक कुल 26 letters हैं। हर English word इन्हीं 26 letters से लिखा जाता है।",
+    "हर letter के दो रूप होते हैं। Capital letters (A, B, C) बड़े होते हैं। Small letters (a, b, c) छोटे होते हैं, इन्हें lowercase भी कहते हैं। ज़्यादातर हम small letters में ही लिखते हैं।",
+    "Capital letter तीन जगह ज़रूर लगाते हैं — sentence की शुरुआत में, लोगों और जगहों के नाम में (Ravi, Pune, India), और जब 'I' का मतलब 'मैं' हो।",
+    "पाँच letters vowels हैं: A, E, I, O, U। बाकी 21 letters consonants हैं। लगभग हर English word में कम से कम एक vowel ज़रूर होता है।"
+  ],
+  "key_points": [
+    "There are 26 letters: A to Z.",
+    "Every letter has a capital and a small form.",
+    "Vowels: A, E, I, O, U. All other letters are consonants.",
+    "Start every sentence and every name with a capital letter.",
+    "The word 'I' (meaning me) is always a capital letter."
+  ],
+  "key_points_hi": [
+    "कुल 26 letters हैं: A से Z तक।",
+    "हर letter का एक capital और एक small रूप होता है।",
+    "Vowels हैं: A, E, I, O, U। बाकी सब consonants हैं।",
+    "हर sentence और हर नाम की शुरुआत capital letter से करें।",
+    "'I' (मतलब मैं) हमेशा capital में लिखा जाता है।"
+  ],
+  "examples": [
+    {"english": "A a — apple", "note": "A is a vowel.", "hindi": "A से apple (सेब)"},
+    {"english": "B b — ball", "note": "B is a consonant.", "hindi": "B से ball (गेंद)"},
+    {"english": "C c — cat", "note": "Here C sounds like 'k'.", "hindi": "C से cat (बिल्ली) — यहाँ C की आवाज़ 'क' जैसी है।"},
+    {"english": "My name is Ravi.", "note": "Sentence starts with a capital M; the name Ravi has a capital R.", "hindi": "मेरा नाम रवि है। — sentence की शुरुआत और नाम, दोनों capital से।"},
+    {"english": "I live in Pune.", "note": "'I' and the place name 'Pune' are capital.", "hindi": "मैं पुणे में रहता हूँ। — 'I' और 'Pune' दोनों capital में।"},
+    {"english": "D d — dog, E e — egg, F f — fish", "note": "Say the letter, then the word.", "hindi": "पहले letter बोलें, फिर word — dog (कुत्ता), egg (अंडा), fish (मछली)।"}
+  ],
+  "vocabulary": [
+    {"word": "letter", "meaning": "one sign in the alphabet, like A or b", "meaning_hi": "अक्षर", "example": "A is the first letter."},
+    {"word": "alphabet", "meaning": "all 26 letters in order", "meaning_hi": "वर्णमाला", "example": "Say the alphabet from A to Z."},
+    {"word": "capital letter", "meaning": "the big form of a letter (A, B, C)", "meaning_hi": "बड़ा अक्षर", "example": "Names start with a capital letter."},
+    {"word": "small letter", "meaning": "the small form of a letter (a, b, c)", "meaning_hi": "छोटा अक्षर", "example": "Write 'cat' in small letters."},
+    {"word": "vowel", "meaning": "the letters a, e, i, o, u", "meaning_hi": "स्वर", "example": "'E' is a vowel."},
+    {"word": "consonant", "meaning": "any letter that is not a vowel", "meaning_hi": "व्यंजन", "example": "'B' is a consonant."},
+    {"word": "word", "meaning": "letters joined together that have a meaning", "meaning_hi": "शब्द", "example": "'Dog' is a word."},
+    {"word": "spell", "meaning": "say or write the letters of a word in order", "meaning_hi": "हिज्जे करना / spelling बताना", "example": "Spell 'cat': c-a-t."}
+  ],
+  "common_mistakes": [
+    {"wrong": "i am happy.", "right": "I am happy.", "why": "'I' meaning 'me' is always a capital letter, and a sentence starts with a capital.", "why_hi": "'I' (मैं) हमेशा capital होता है, और sentence भी capital से शुरू होता है।"},
+    {"wrong": "my name is ravi.", "right": "My name is Ravi.", "why": "Start the sentence and the name with capital letters.", "why_hi": "Sentence की शुरुआत और नाम, दोनों capital letter से।"},
+    {"wrong": "dog → bog", "right": "dog", "why": "b and d look like mirror images; b has its circle on the right, d on the left.", "why_hi": "b और d आपस में उल्टे दिखते हैं — b का गोला दाईं तरफ़, d का बाईं तरफ़ होता है।"},
+    {"wrong": "I live in pune.", "right": "I live in Pune.", "why": "Names of cities are always capital.", "why_hi": "शहरों के नाम हमेशा capital letter से शुरू होते हैं।"}
+  ],
+  "practice": [
+    "Write all 26 letters in capital form, then in small form.",
+    "Write your name and your city name with the correct capital letters.",
+    "Say one word for each vowel: a, e, i, o, u."
+  ],
+  "practice_hi": [
+    "सभी 26 letters पहले capital में, फिर small में लिखें।",
+    "अपना नाम और अपने शहर का नाम सही capital letters के साथ लिखें।",
+    "हर vowel (a, e, i, o, u) के लिए एक word बोलें।"
+  ],
+  "quiz": [
+    {"question": "How many letters are there in the English alphabet?", "options": ["24", "26", "28", "52"], "answer_index": 1, "explanation": "There are 26 letters, A to Z.", "explanation_hi": "English alphabet में 26 letters होते हैं।"},
+    {"question": "Which of these is a vowel?", "options": ["B", "T", "O", "K"], "answer_index": 2, "explanation": "The vowels are A, E, I, O, U.", "explanation_hi": "Vowels सिर्फ़ A, E, I, O, U हैं, इसलिए O सही है।"},
+    {"question": "Which sentence is written correctly?", "options": ["i like tea.", "I like tea.", "I Like Tea.", "i Like tea."], "answer_index": 1, "explanation": "Only the first word and 'I' need capital letters here.", "explanation_hi": "यहाँ सिर्फ़ पहला word और 'I' capital होंगे।"},
+    {"question": "What is the small form of 'G'?", "options": ["q", "j", "g", "y"], "answer_index": 2, "explanation": "Capital G becomes small g.", "explanation_hi": "Capital G का small रूप g है।"},
+    {"question": "Which word needs a capital first letter?", "options": ["apple", "delhi", "table", "water"], "answer_index": 1, "explanation": "Delhi is the name of a city, so it is written 'Delhi'.", "explanation_hi": "Delhi एक शहर का नाम है, इसलिए यह capital D से लिखा जाएगा।"}
+  ],
+  "reviewed": true,
+  "source": "written for EnglishAI"
+}

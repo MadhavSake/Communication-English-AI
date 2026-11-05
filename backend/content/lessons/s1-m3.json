@@ -1,0 +1,238 @@
+{
+  "stage": 1,
+  "module": 3,
+  "module_name": "First Vocabulary",
+  "title": "First Words: Animals, Food, Colours, Numbers and Body",
+  "summary": "Start with simple words you see every day. Learn them in groups and use each word in a short sentence.",
+  "summary_hi": "शुरुआत रोज़ दिखने वाले आसान words से करें। Words को groups में सीखें और हर word को एक छोटे sentence में बोलें।",
+  "explanation": [
+    "Learning words in groups is easier. Today we learn six groups: animals, fruits, vegetables, colours, numbers and body parts.",
+    "Use a simple pattern to practise each word: 'This is a ___.' For example: This is a cat. This is a mango.",
+    "When there is more than one thing, we usually add 's' to the word: one cat, two cats; one apple, three apples.",
+    "Learn 5 to 10 new words every day. Say each word aloud, write it once, and use it in one sentence. Small daily practice is better than a lot on one day."
+  ],
+  "explanation_hi": [
+    "Words को groups में सीखना आसान होता है। आज हम छह groups सीखेंगे: animals, fruits, vegetables, colours, numbers और body parts।",
+    "हर word की practice के लिए एक आसान pattern इस्तेमाल करें: 'This is a ___.' जैसे — This is a cat. This is a mango.",
+    "जब चीज़ एक से ज़्यादा हो, तो आमतौर पर word के आख़िर में 's' लगाते हैं: one cat, two cats; one apple, three apples।",
+    "रोज़ 5 से 10 नए words सीखें। हर word को ज़ोर से बोलें, एक बार लिखें, और एक sentence में use करें। एक दिन में बहुत सारा पढ़ने से बेहतर है रोज़ थोड़ा-थोड़ा।"
+  ],
+  "key_points": [
+    "Learn words in groups (animals, fruits, colours…).",
+    "Practise with 'This is a ___.'",
+    "More than one → usually add 's' (cats, apples).",
+    "5–10 new words a day: say, write, use."
+  ],
+  "key_points_hi": [
+    "Words को groups में सीखें (animals, fruits, colours…)।",
+    "'This is a ___.' से practice करें।",
+    "एक से ज़्यादा हो तो आमतौर पर 's' लगाएँ (cats, apples)।",
+    "रोज़ 5–10 नए words: बोलें, लिखें, use करें।"
+  ],
+  "examples": [
+    {
+      "english": "This is a dog.",
+      "note": "Animal word in the basic pattern.",
+      "hindi": "यह एक कुत्ता है।"
+    },
+    {
+      "english": "I like mangoes.",
+      "note": "Fruit word; 'mangoes' means more than one.",
+      "hindi": "मुझे आम पसंद हैं।"
+    },
+    {
+      "english": "The tomato is red.",
+      "note": "Vegetable + colour.",
+      "hindi": "टमाटर लाल है।"
+    },
+    {
+      "english": "I have two hands.",
+      "note": "Number + body part; 'hands' because there are two.",
+      "hindi": "मेरे दो हाथ हैं।"
+    },
+    {
+      "english": "The sky is blue.",
+      "note": "Colour word.",
+      "hindi": "आसमान नीला है।"
+    },
+    {
+      "english": "She has three cats.",
+      "note": "Number + animal + 's'.",
+      "hindi": "उसके पास तीन बिल्लियाँ हैं।"
+    }
+  ],
+  "vocabulary": [
+    {
+      "word": "cow",
+      "meaning": "a farm animal that gives milk",
+      "meaning_hi": "गाय",
+      "example": "The cow is in the field."
+    },
+    {
+      "word": "bird",
+      "meaning": "an animal that can fly",
+      "meaning_hi": "पक्षी / चिड़िया",
+      "example": "The bird is singing."
+    },
+    {
+      "word": "banana",
+      "meaning": "a long yellow fruit",
+      "meaning_hi": "केला",
+      "example": "I eat a banana every day."
+    },
+    {
+      "word": "mango",
+      "meaning": "a sweet summer fruit",
+      "meaning_hi": "आम",
+      "example": "This mango is sweet."
+    },
+    {
+      "word": "potato",
+      "meaning": "a common vegetable",
+      "meaning_hi": "आलू",
+      "example": "Mom is cooking potatoes."
+    },
+    {
+      "word": "onion",
+      "meaning": "a vegetable used in most Indian food",
+      "meaning_hi": "प्याज़",
+      "example": "Cut the onion."
+    },
+    {
+      "word": "red",
+      "meaning": "the colour of a tomato",
+      "meaning_hi": "लाल",
+      "example": "My bag is red."
+    },
+    {
+      "word": "green",
+      "meaning": "the colour of leaves",
+      "meaning_hi": "हरा",
+      "example": "The leaves are green."
+    },
+    {
+      "word": "one, two, three",
+      "meaning": "the numbers 1, 2, 3",
+      "meaning_hi": "एक, दो, तीन",
+      "example": "I have two brothers."
+    },
+    {
+      "word": "ten",
+      "meaning": "the number 10",
+      "meaning_hi": "दस",
+      "example": "I have ten fingers."
+    },
+    {
+      "word": "eye",
+      "meaning": "the part of the body we see with",
+      "meaning_hi": "आँख",
+      "example": "Close your eyes."
+    },
+    {
+      "word": "hand",
+      "meaning": "the part at the end of the arm",
+      "meaning_hi": "हाथ",
+      "example": "Wash your hands."
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "I have two hand.",
+      "right": "I have two hands.",
+      "why": "More than one → add 's'.",
+      "why_hi": "एक से ज़्यादा है, इसलिए 's' लगेगा — hands।"
+    },
+    {
+      "wrong": "This is cat.",
+      "right": "This is a cat.",
+      "why": "Use 'a' before one thing.",
+      "why_hi": "एक चीज़ के लिए उसके पहले 'a' लगाते हैं।"
+    },
+    {
+      "wrong": "The apple are red.",
+      "right": "The apple is red. / The apples are red.",
+      "why": "One thing → is; many things → are.",
+      "why_hi": "एक चीज़ हो तो 'is', ज़्यादा हों तो 'are'।"
+    },
+    {
+      "wrong": "She have a dog.",
+      "right": "She has a dog.",
+      "why": "With he/she/it use 'has'; with I/you/we/they use 'have'.",
+      "why_hi": "He/she/it के साथ 'has', और I/you/we/they के साथ 'have' आता है।"
+    }
+  ],
+  "practice": [
+    "Look around your room and say 'This is a ___.' for five things.",
+    "Write the colour of five things you can see: 'The bag is black.'",
+    "Count your fingers, eyes and hands in English: 'I have ten fingers.'"
+  ],
+  "practice_hi": [
+    "अपने कमरे में देखिए और पाँच चीज़ों के लिए बोलिए: 'This is a ___.'",
+    "जो पाँच चीज़ें दिख रही हैं, उनका colour लिखिए: 'The bag is black.'",
+    "अपनी उँगलियाँ, आँखें और हाथ English में गिनिए: 'I have ten fingers.'"
+  ],
+  "quiz": [
+    {
+      "question": "Which word is a fruit?",
+      "options": [
+        "onion",
+        "banana",
+        "potato",
+        "cow"
+      ],
+      "answer_index": 1,
+      "explanation": "A banana is a fruit; onion and potato are vegetables.",
+      "explanation_hi": "Banana एक fruit है, onion और potato vegetables हैं।"
+    },
+    {
+      "question": "Choose the correct sentence.",
+      "options": [
+        "I have two eye.",
+        "I have two eyes.",
+        "I has two eyes.",
+        "I have two eyess."
+      ],
+      "answer_index": 1,
+      "explanation": "Two → plural 'eyes', and 'I have'.",
+      "explanation_hi": "दो हैं, इसलिए 'eyes', और 'I' के साथ 'have' आता है।"
+    },
+    {
+      "question": "What colour are leaves?",
+      "options": [
+        "blue",
+        "red",
+        "green",
+        "black"
+      ],
+      "answer_index": 2,
+      "explanation": "Leaves are green.",
+      "explanation_hi": "पत्ते हरे (green) होते हैं।"
+    },
+    {
+      "question": "'गाय' in English is…",
+      "options": [
+        "dog",
+        "cow",
+        "goat",
+        "cat"
+      ],
+      "answer_index": 1,
+      "explanation": "गाय = cow.",
+      "explanation_hi": "गाय को English में cow कहते हैं।"
+    },
+    {
+      "question": "Fill in: 'This is ___ mango.'",
+      "options": [
+        "a",
+        "two",
+        "are",
+        "is"
+      ],
+      "answer_index": 0,
+      "explanation": "One thing → 'a'.",
+      "explanation_hi": "एक चीज़ के लिए 'a' लगता है।"
+    }
+  ],
+  "reviewed": true,
+  "source": "written for EnglishAI"
+}
