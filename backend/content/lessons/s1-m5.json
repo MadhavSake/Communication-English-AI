@@ -1,0 +1,342 @@
+{
+  "stage": 1,
+  "module": 5,
+  "module_name": "Pronouns",
+  "title": "Pronouns: I, You, He, She, It, We, They",
+  "summary": "A pronoun is a short word we use in place of a name, so we don't repeat the name again and again.",
+  "summary_hi": "Pronoun वह छोटा word है जो किसी नाम की जगह use होता है, ताकि हमें बार-बार नाम न दोहराना पड़े।",
+  "explanation": [
+    "Instead of saying 'Ravi is a student. Ravi lives in Pune.', we say 'Ravi is a student. He lives in Pune.' The word 'He' is a pronoun.",
+    "There are seven basic subject pronouns: I, you, he, she, it, we, they. They come at the start of a sentence, before the verb.",
+    "Each pronoun goes with its own form of 'be': I am, he/she/it is, and you/we/they are.",
+    "Use 'he' for a man or boy, 'she' for a woman or girl, and 'it' for a thing or an animal. 'They' is for more than one person or thing."
+  ],
+  "explanation_hi": [
+    "'Ravi is a student. Ravi lives in Pune.' बोलने की जगह हम कहते हैं 'Ravi is a student. He lives in Pune.' यहाँ 'He' एक pronoun है।",
+    "सात basic subject pronouns होते हैं: I, you, he, she, it, we, they। ये sentence की शुरुआत में, verb से पहले आते हैं।",
+    "हर pronoun के साथ 'be' का अपना form आता है: I am, he/she/it is, और you/we/they are।",
+    "आदमी या लड़के के लिए 'he', औरत या लड़की के लिए 'she', और किसी चीज़ या जानवर के लिए 'it' use करें। एक से ज़्यादा लोगों या चीज़ों के लिए 'they'।"
+  ],
+  "tables": [
+    {
+      "title": "Subject pronouns",
+      "title_hi": "Subject pronouns (कर्ता के रूप में)",
+      "columns": [
+        "Pronoun",
+        "हिन्दी",
+        "For",
+        "Example",
+        "हिन्दी में"
+      ],
+      "rows": [
+        [
+          "I",
+          "मैं",
+          "yourself",
+          "I am a teacher.",
+          "मैं teacher हूँ।"
+        ],
+        [
+          "You",
+          "तुम / आप",
+          "the person you talk to",
+          "You are my friend.",
+          "तुम मेरे दोस्त हो।"
+        ],
+        [
+          "He",
+          "वह (लड़का/आदमी)",
+          "one male",
+          "He is my brother.",
+          "वह मेरा भाई है।"
+        ],
+        [
+          "She",
+          "वह (लड़की/औरत)",
+          "one female",
+          "She is a doctor.",
+          "वह doctor है।"
+        ],
+        [
+          "It",
+          "यह / वह (चीज़/जानवर)",
+          "a thing or animal",
+          "It is a big dog.",
+          "यह एक बड़ा कुत्ता है।"
+        ],
+        [
+          "We",
+          "हम",
+          "me + others",
+          "We are students.",
+          "हम students हैं।"
+        ],
+        [
+          "They",
+          "वे",
+          "other people or things",
+          "They are in Mumbai.",
+          "वे मुंबई में हैं।"
+        ]
+      ]
+    },
+    {
+      "title": "Pronoun + am / is / are",
+      "title_hi": "Pronoun के साथ am / is / are",
+      "columns": [
+        "Pronoun",
+        "Verb",
+        "Short form"
+      ],
+      "rows": [
+        [
+          "I",
+          "am",
+          "I'm"
+        ],
+        [
+          "You",
+          "are",
+          "You're"
+        ],
+        [
+          "He",
+          "is",
+          "He's"
+        ],
+        [
+          "She",
+          "is",
+          "She's"
+        ],
+        [
+          "It",
+          "is",
+          "It's"
+        ],
+        [
+          "We",
+          "are",
+          "We're"
+        ],
+        [
+          "They",
+          "are",
+          "They're"
+        ]
+      ]
+    },
+    {
+      "title": "My, your, his… (possessive)",
+      "title_hi": "मेरा, तुम्हारा… (possessive)",
+      "columns": [
+        "Pronoun",
+        "Possessive",
+        "हिन्दी",
+        "Example"
+      ],
+      "rows": [
+        [
+          "I",
+          "my",
+          "मेरा / मेरी",
+          "This is my bag."
+        ],
+        [
+          "You",
+          "your",
+          "तुम्हारा / आपका",
+          "Is this your phone?"
+        ],
+        [
+          "He",
+          "his",
+          "उसका (लड़के का)",
+          "His name is Amit."
+        ],
+        [
+          "She",
+          "her",
+          "उसका (लड़की का)",
+          "Her name is Priya."
+        ],
+        [
+          "It",
+          "its",
+          "इसका",
+          "The dog wagged its tail."
+        ],
+        [
+          "We",
+          "our",
+          "हमारा",
+          "Our house is small."
+        ],
+        [
+          "They",
+          "their",
+          "उनका",
+          "Their car is red."
+        ]
+      ]
+    }
+  ],
+  "key_points": [
+    "Pronouns replace names.",
+    "I am · he/she/it is · you/we/they are.",
+    "'I' is always a capital letter.",
+    "he = male, she = female, it = thing/animal, they = more than one."
+  ],
+  "key_points_hi": [
+    "Pronouns नाम की जगह आते हैं।",
+    "I am · he/she/it is · you/we/they are।",
+    "'I' हमेशा capital letter में लिखा जाता है।",
+    "he = पुरुष, she = स्त्री, it = चीज़/जानवर, they = एक से ज़्यादा।"
+  ],
+  "examples": [
+    {
+      "english": "Priya is my sister. She is ten.",
+      "note": "'She' replaces 'Priya'.",
+      "hindi": "प्रिया मेरी बहन है। वह दस साल की है।"
+    },
+    {
+      "english": "This is my phone. It is new.",
+      "note": "'It' for a thing.",
+      "hindi": "यह मेरा फ़ोन है। यह नया है।"
+    },
+    {
+      "english": "Amit and I are friends. We play cricket.",
+      "note": "'We' = Amit + me.",
+      "hindi": "अमित और मैं दोस्त हैं। हम cricket खेलते हैं।"
+    },
+    {
+      "english": "My parents are at home. They are happy.",
+      "note": "'They' for more than one person.",
+      "hindi": "मेरे माता-पिता घर पर हैं। वे ख़ुश हैं।"
+    }
+  ],
+  "vocabulary": [
+    {
+      "word": "pronoun",
+      "meaning": "a word used instead of a name",
+      "meaning_hi": "सर्वनाम",
+      "example": "'He' is a pronoun."
+    },
+    {
+      "word": "subject",
+      "meaning": "the person or thing doing the action",
+      "meaning_hi": "कर्ता",
+      "example": "In 'She sings', 'she' is the subject."
+    },
+    {
+      "word": "male",
+      "meaning": "a man or boy",
+      "meaning_hi": "पुरुष",
+      "example": "Use 'he' for a male."
+    },
+    {
+      "word": "female",
+      "meaning": "a woman or girl",
+      "meaning_hi": "स्त्री",
+      "example": "Use 'she' for a female."
+    }
+  ],
+  "common_mistakes": [
+    {
+      "wrong": "He are my friend.",
+      "right": "He is my friend.",
+      "why": "he/she/it → is",
+      "why_hi": "he/she/it के साथ हमेशा 'is' आता है।"
+    },
+    {
+      "wrong": "Me am happy.",
+      "right": "I am happy.",
+      "why": "Use 'I' as the subject, not 'me'.",
+      "why_hi": "Sentence की शुरुआत में कर्ता के रूप में 'I' आता है, 'me' नहीं।"
+    },
+    {
+      "wrong": "My mother, he is a teacher.",
+      "right": "My mother is a teacher. / She is a teacher.",
+      "why": "Mother is female → she; and don't repeat the subject.",
+      "why_hi": "Mother स्त्री हैं, इसलिए 'she'; और कर्ता दो बार न लिखें।"
+    },
+    {
+      "wrong": "The cat, she is sleeping. (in general use)",
+      "right": "The cat is sleeping. / It is sleeping.",
+      "why": "For animals we usually use 'it'.",
+      "why_hi": "जानवरों के लिए आमतौर पर 'it' use करते हैं।"
+    }
+  ],
+  "practice": [
+    "Write one sentence with each pronoun: I, you, he, she, it, we, they.",
+    "Introduce three family members using he/she: 'This is my father. He is a farmer.'"
+  ],
+  "practice_hi": [
+    "हर pronoun (I, you, he, she, it, we, they) से एक-एक sentence लिखें।",
+    "Family के तीन लोगों का परिचय he/she से दें: 'This is my father. He is a farmer.'"
+  ],
+  "quiz": [
+    {
+      "question": "___ is my sister.",
+      "options": [
+        "He",
+        "She",
+        "It",
+        "They"
+      ],
+      "answer_index": 1,
+      "explanation": "Sister is female → She.",
+      "explanation_hi": "बहन स्त्री है, इसलिए 'She'।"
+    },
+    {
+      "question": "We ___ students.",
+      "options": [
+        "am",
+        "is",
+        "are",
+        "be"
+      ],
+      "answer_index": 2,
+      "explanation": "we → are",
+      "explanation_hi": "'we' के साथ 'are' आता है।"
+    },
+    {
+      "question": "Which pronoun is used for a thing?",
+      "options": [
+        "he",
+        "she",
+        "it",
+        "we"
+      ],
+      "answer_index": 2,
+      "explanation": "'It' is for things and animals.",
+      "explanation_hi": "चीज़ों और जानवरों के लिए 'it'।"
+    },
+    {
+      "question": "Rahul and Sita are here. ___ are happy.",
+      "options": [
+        "He",
+        "She",
+        "We",
+        "They"
+      ],
+      "answer_index": 3,
+      "explanation": "Two people (not including me) → They.",
+      "explanation_hi": "दो लोग हैं और मैं शामिल नहीं, इसलिए 'They'।"
+    },
+    {
+      "question": "This is ___ book. (मेरी)",
+      "options": [
+        "I",
+        "me",
+        "my",
+        "mine"
+      ],
+      "answer_index": 2,
+      "explanation": "Before a noun use 'my'.",
+      "explanation_hi": "Noun से पहले 'my' आता है।"
+    }
+  ],
+  "reviewed": true,
+  "source": "written for EnglishAI"
+}

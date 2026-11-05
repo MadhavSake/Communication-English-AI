@@ -32,3 +32,9 @@
 .lv-actions { display: flex; gap: 8px; align-items: center; }
 .lv-toggle { background: none; border: 1px solid #2d2d3d; color: #94a3b8; border-radius: 999px; padding: 6px 12px; cursor: pointer; font-size: 13px; }
 .lv-toggle.on { border-color: #6366f1; color: #c4b5fd; background: rgba(99, 102, 241, 0.12); }
+.lv-table-wrap { overflow-x: auto; border: 1px solid #2d2d3d; border-radius: 10px; }
+.lv-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.lv-table th { text-align: left; padding: 8px 12px; background: #16162a; color: #a78bfa; font-weight: 600; white-space: nowrap; }
+.lv-table td { padding: 8px 12px; border-top: 1px solid #2d2d3d; color: #e2e8f0; }
+.lv-table tr:nth-child(even) td { background: rgba(255, 255, 255, 0.02); }
+.lv-hi-inline { color: #c4b5fd; font-weight: 400; font-size: 14px; }

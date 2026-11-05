@@ -2,17 +2,17 @@
   "stage": 1,
   "module": 3,
   "module_name": "First Vocabulary",
-  "title": "First Words: Animals, Food, Colours, Numbers and Body",
+  "title": "First Words: Animals, Birds, Food, Colours, Numbers, Days, Months and Body",
   "summary": "Start with simple words you see every day. Learn them in groups and use each word in a short sentence.",
   "summary_hi": "शुरुआत रोज़ दिखने वाले आसान words से करें। Words को groups में सीखें और हर word को एक छोटे sentence में बोलें।",
   "explanation": [
-    "Learning words in groups is easier. Today we learn six groups: animals, fruits, vegetables, colours, numbers and body parts.",
+    "Learning words in groups is easier. In this lesson you get nine groups: animals, birds, fruits, vegetables, colours, numbers, days, months and body parts.",
     "Use a simple pattern to practise each word: 'This is a ___.' For example: This is a cat. This is a mango.",
     "When there is more than one thing, we usually add 's' to the word: one cat, two cats; one apple, three apples.",
     "Learn 5 to 10 new words every day. Say each word aloud, write it once, and use it in one sentence. Small daily practice is better than a lot on one day."
   ],
   "explanation_hi": [
-    "Words को groups में सीखना आसान होता है। आज हम छह groups सीखेंगे: animals, fruits, vegetables, colours, numbers और body parts।",
+    "Words को groups में सीखना आसान होता है। इस lesson में नौ groups हैं: animals, birds, fruits, vegetables, colours, numbers, days, months और body parts।",
     "हर word की practice के लिए एक आसान pattern इस्तेमाल करें: 'This is a ___.' जैसे — This is a cat. This is a mango.",
     "जब चीज़ एक से ज़्यादा हो, तो आमतौर पर word के आख़िर में 's' लगाते हैं: one cat, two cats; one apple, three apples।",
     "रोज़ 5 से 10 नए words सीखें। हर word को ज़ोर से बोलें, एक बार लिखें, और एक sentence में use करें। एक दिन में बहुत सारा पढ़ने से बेहतर है रोज़ थोड़ा-थोड़ा।"
@@ -21,13 +21,15 @@
     "Learn words in groups (animals, fruits, colours…).",
     "Practise with 'This is a ___.'",
     "More than one → usually add 's' (cats, apples).",
-    "5–10 new words a day: say, write, use."
+    "5–10 new words a day: say, write, use.",
+    "Days and months always start with a capital letter (Monday, January)."
   ],
   "key_points_hi": [
     "Words को groups में सीखें (animals, fruits, colours…)।",
     "'This is a ___.' से practice करें।",
     "एक से ज़्यादा हो तो आमतौर पर 's' लगाएँ (cats, apples)।",
-    "रोज़ 5–10 नए words: बोलें, लिखें, use करें।"
+    "रोज़ 5–10 नए words: बोलें, लिखें, use करें।",
+    "दिनों और महीनों के नाम हमेशा capital letter से शुरू होते हैं (Monday, January)।"
   ],
   "examples": [
     {
@@ -234,5 +236,707 @@
     }
   ],
   "reviewed": true,
-  "source": "written for EnglishAI"
+  "source": "written for EnglishAI",
+  "tables": [
+    {
+      "title": "Animals",
+      "title_hi": "जानवर",
+      "columns": [
+        "English",
+        "हिन्दी"
+      ],
+      "rows": [
+        [
+          "dog",
+          "कुत्ता"
+        ],
+        [
+          "cat",
+          "बिल्ली"
+        ],
+        [
+          "cow",
+          "गाय"
+        ],
+        [
+          "buffalo",
+          "भैंस"
+        ],
+        [
+          "goat",
+          "बकरी"
+        ],
+        [
+          "horse",
+          "घोड़ा"
+        ],
+        [
+          "donkey",
+          "गधा"
+        ],
+        [
+          "sheep",
+          "भेड़"
+        ],
+        [
+          "pig",
+          "सुअर"
+        ],
+        [
+          "lion",
+          "शेर"
+        ],
+        [
+          "tiger",
+          "बाघ"
+        ],
+        [
+          "elephant",
+          "हाथी"
+        ],
+        [
+          "monkey",
+          "बंदर"
+        ],
+        [
+          "bear",
+          "भालू"
+        ],
+        [
+          "fox",
+          "लोमड़ी"
+        ],
+        [
+          "deer",
+          "हिरण"
+        ],
+        [
+          "rabbit",
+          "खरगोश"
+        ],
+        [
+          "camel",
+          "ऊँट"
+        ],
+        [
+          "rat",
+          "चूहा"
+        ],
+        [
+          "snake",
+          "साँप"
+        ]
+      ]
+    },
+    {
+      "title": "Birds",
+      "title_hi": "पक्षी",
+      "columns": [
+        "English",
+        "हिन्दी"
+      ],
+      "rows": [
+        [
+          "crow",
+          "कौआ"
+        ],
+        [
+          "sparrow",
+          "गौरैया"
+        ],
+        [
+          "parrot",
+          "तोता"
+        ],
+        [
+          "pigeon",
+          "कबूतर"
+        ],
+        [
+          "peacock",
+          "मोर"
+        ],
+        [
+          "eagle",
+          "चील / बाज़"
+        ],
+        [
+          "owl",
+          "उल्लू"
+        ],
+        [
+          "duck",
+          "बत्तख"
+        ],
+        [
+          "hen",
+          "मुर्गी"
+        ],
+        [
+          "cock",
+          "मुर्गा"
+        ],
+        [
+          "swan",
+          "हंस"
+        ],
+        [
+          "cuckoo",
+          "कोयल"
+        ]
+      ]
+    },
+    {
+      "title": "Fruits",
+      "title_hi": "फल",
+      "columns": [
+        "English",
+        "हिन्दी"
+      ],
+      "rows": [
+        [
+          "apple",
+          "सेब"
+        ],
+        [
+          "banana",
+          "केला"
+        ],
+        [
+          "mango",
+          "आम"
+        ],
+        [
+          "orange",
+          "संतरा"
+        ],
+        [
+          "grapes",
+          "अंगूर"
+        ],
+        [
+          "guava",
+          "अमरूद"
+        ],
+        [
+          "papaya",
+          "पपीता"
+        ],
+        [
+          "pineapple",
+          "अनानास"
+        ],
+        [
+          "watermelon",
+          "तरबूज़"
+        ],
+        [
+          "pomegranate",
+          "अनार"
+        ],
+        [
+          "lemon",
+          "नींबू"
+        ],
+        [
+          "coconut",
+          "नारियल"
+        ],
+        [
+          "strawberry",
+          "स्ट्रॉबेरी"
+        ],
+        [
+          "pear",
+          "नाशपाती"
+        ],
+        [
+          "custard apple",
+          "सीताफल"
+        ]
+      ]
+    },
+    {
+      "title": "Vegetables",
+      "title_hi": "सब्ज़ियाँ",
+      "columns": [
+        "English",
+        "हिन्दी"
+      ],
+      "rows": [
+        [
+          "potato",
+          "आलू"
+        ],
+        [
+          "onion",
+          "प्याज़"
+        ],
+        [
+          "tomato",
+          "टमाटर"
+        ],
+        [
+          "carrot",
+          "गाजर"
+        ],
+        [
+          "cabbage",
+          "पत्ता गोभी"
+        ],
+        [
+          "cauliflower",
+          "फूल गोभी"
+        ],
+        [
+          "brinjal",
+          "बैंगन"
+        ],
+        [
+          "lady finger (okra)",
+          "भिंडी"
+        ],
+        [
+          "peas",
+          "मटर"
+        ],
+        [
+          "spinach",
+          "पालक"
+        ],
+        [
+          "cucumber",
+          "खीरा"
+        ],
+        [
+          "radish",
+          "मूली"
+        ],
+        [
+          "garlic",
+          "लहसुन"
+        ],
+        [
+          "ginger",
+          "अदरक"
+        ],
+        [
+          "green chilli",
+          "हरी मिर्च"
+        ],
+        [
+          "pumpkin",
+          "कद्दू"
+        ]
+      ]
+    },
+    {
+      "title": "Colours",
+      "title_hi": "रंग",
+      "columns": [
+        "English",
+        "हिन्दी"
+      ],
+      "rows": [
+        [
+          "red",
+          "लाल"
+        ],
+        [
+          "blue",
+          "नीला"
+        ],
+        [
+          "green",
+          "हरा"
+        ],
+        [
+          "yellow",
+          "पीला"
+        ],
+        [
+          "black",
+          "काला"
+        ],
+        [
+          "white",
+          "सफ़ेद"
+        ],
+        [
+          "orange",
+          "नारंगी"
+        ],
+        [
+          "pink",
+          "गुलाबी"
+        ],
+        [
+          "purple",
+          "बैंगनी"
+        ],
+        [
+          "brown",
+          "भूरा"
+        ],
+        [
+          "grey",
+          "स्लेटी"
+        ],
+        [
+          "golden",
+          "सुनहरा"
+        ]
+      ]
+    },
+    {
+      "title": "Numbers",
+      "title_hi": "संख्याएँ",
+      "columns": [
+        "Number",
+        "English",
+        "हिन्दी"
+      ],
+      "rows": [
+        [
+          "1",
+          "one",
+          "एक"
+        ],
+        [
+          "2",
+          "two",
+          "दो"
+        ],
+        [
+          "3",
+          "three",
+          "तीन"
+        ],
+        [
+          "4",
+          "four",
+          "चार"
+        ],
+        [
+          "5",
+          "five",
+          "पाँच"
+        ],
+        [
+          "6",
+          "six",
+          "छह"
+        ],
+        [
+          "7",
+          "seven",
+          "सात"
+        ],
+        [
+          "8",
+          "eight",
+          "आठ"
+        ],
+        [
+          "9",
+          "nine",
+          "नौ"
+        ],
+        [
+          "10",
+          "ten",
+          "दस"
+        ],
+        [
+          "11",
+          "eleven",
+          "ग्यारह"
+        ],
+        [
+          "12",
+          "twelve",
+          "बारह"
+        ],
+        [
+          "13",
+          "thirteen",
+          "तेरह"
+        ],
+        [
+          "14",
+          "fourteen",
+          "चौदह"
+        ],
+        [
+          "15",
+          "fifteen",
+          "पंद्रह"
+        ],
+        [
+          "16",
+          "sixteen",
+          "सोलह"
+        ],
+        [
+          "17",
+          "seventeen",
+          "सत्रह"
+        ],
+        [
+          "18",
+          "eighteen",
+          "अठारह"
+        ],
+        [
+          "19",
+          "nineteen",
+          "उन्नीस"
+        ],
+        [
+          "20",
+          "twenty",
+          "बीस"
+        ],
+        [
+          "30",
+          "thirty",
+          "तीस"
+        ],
+        [
+          "40",
+          "forty",
+          "चालीस"
+        ],
+        [
+          "50",
+          "fifty",
+          "पचास"
+        ],
+        [
+          "60",
+          "sixty",
+          "साठ"
+        ],
+        [
+          "70",
+          "seventy",
+          "सत्तर"
+        ],
+        [
+          "80",
+          "eighty",
+          "अस्सी"
+        ],
+        [
+          "90",
+          "ninety",
+          "नब्बे"
+        ],
+        [
+          "100",
+          "one hundred",
+          "सौ"
+        ],
+        [
+          "1,000",
+          "one thousand",
+          "हज़ार"
+        ]
+      ]
+    },
+    {
+      "title": "Days of the week",
+      "title_hi": "हफ़्ते के दिन",
+      "columns": [
+        "English",
+        "हिन्दी"
+      ],
+      "rows": [
+        [
+          "Monday",
+          "सोमवार"
+        ],
+        [
+          "Tuesday",
+          "मंगलवार"
+        ],
+        [
+          "Wednesday",
+          "बुधवार"
+        ],
+        [
+          "Thursday",
+          "गुरुवार"
+        ],
+        [
+          "Friday",
+          "शुक्रवार"
+        ],
+        [
+          "Saturday",
+          "शनिवार"
+        ],
+        [
+          "Sunday",
+          "रविवार"
+        ]
+      ]
+    },
+    {
+      "title": "Months of the year",
+      "title_hi": "साल के महीने",
+      "columns": [
+        "English",
+        "हिन्दी"
+      ],
+      "rows": [
+        [
+          "January",
+          "जनवरी"
+        ],
+        [
+          "February",
+          "फ़रवरी"
+        ],
+        [
+          "March",
+          "मार्च"
+        ],
+        [
+          "April",
+          "अप्रैल"
+        ],
+        [
+          "May",
+          "मई"
+        ],
+        [
+          "June",
+          "जून"
+        ],
+        [
+          "July",
+          "जुलाई"
+        ],
+        [
+          "August",
+          "अगस्त"
+        ],
+        [
+          "September",
+          "सितंबर"
+        ],
+        [
+          "October",
+          "अक्टूबर"
+        ],
+        [
+          "November",
+          "नवंबर"
+        ],
+        [
+          "December",
+          "दिसंबर"
+        ]
+      ]
+    },
+    {
+      "title": "Body parts",
+      "title_hi": "शरीर के अंग",
+      "columns": [
+        "English",
+        "हिन्दी"
+      ],
+      "rows": [
+        [
+          "head",
+          "सिर"
+        ],
+        [
+          "hair",
+          "बाल"
+        ],
+        [
+          "face",
+          "चेहरा"
+        ],
+        [
+          "eye",
+          "आँख"
+        ],
+        [
+          "ear",
+          "कान"
+        ],
+        [
+          "nose",
+          "नाक"
+        ],
+        [
+          "mouth",
+          "मुँह"
+        ],
+        [
+          "lip",
+          "होंठ"
+        ],
+        [
+          "tooth / teeth",
+          "दाँत"
+        ],
+        [
+          "tongue",
+          "जीभ"
+        ],
+        [
+          "neck",
+          "गर्दन"
+        ],
+        [
+          "shoulder",
+          "कंधा"
+        ],
+        [
+          "chest",
+          "छाती"
+        ],
+        [
+          "stomach",
+          "पेट"
+        ],
+        [
+          "back",
+          "पीठ"
+        ],
+        [
+          "arm",
+          "बाँह"
+        ],
+        [
+          "hand",
+          "हाथ"
+        ],
+        [
+          "finger",
+          "उँगली"
+        ],
+        [
+          "leg",
+          "पैर (टाँग)"
+        ],
+        [
+          "knee",
+          "घुटना"
+        ],
+        [
+          "foot / feet",
+          "पैर (पंजा)"
+        ],
+        [
+          "toe",
+          "पैर की उँगली"
+        ]
+      ]
+    }
+  ]
 }

@@ -87,6 +87,22 @@ export default function LessonView({ stage, module, title, topics, onClose }) {
             </div>
           ))}
 
+          {lesson.tables?.map((t, ti) => (
+            <section key={`t${ti}`}>
+              <h3>{t.title}{t.title_hi && <span className="lv-hi-inline"> · {t.title_hi}</span>}</h3>
+              <div className="lv-table-wrap">
+                <table className="lv-table">
+                  <thead><tr>{t.columns.map((c, ci) => <th key={ci}>{c}</th>)}</tr></thead>
+                  <tbody>
+                    {t.rows.map((r, ri) => (
+                      <tr key={ri}>{r.map((cell, ci) => <td key={ci}>{cell}</td>)}</tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          ))}
+
           {lesson.key_points?.length > 0 && (
             <section>
               <h3>Key points</h3>
