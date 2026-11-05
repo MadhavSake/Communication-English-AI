@@ -1,12 +1,12 @@
 from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from services.gemini_service import check_grammar, improve_sentence, get_daily_prompt
 
 router = APIRouter()
 
 
 class TextInput(BaseModel):
-    text: str
+    text: str = Field(..., max_length=3000)
     level: int = 1
 
 

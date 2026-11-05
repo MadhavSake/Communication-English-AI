@@ -1,14 +1,50 @@
-import google.generativeai as genai
 import os
 from dotenv import load_dotenv
+from google import genai
+from google.genai import types
 from services.syllabus import describe
 
 load_dotenv()
 
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-# gemini-1.5-flash has been retired; keep the model configurable via env.
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-flash-lite-latest")  # free tier
-model = genai.GenerativeModel(GEMINI_MODEL)
+# Vertex AI (GEMINI_USE_VERTEX=true, billed to the GCP project, uses the Cloud Run
+# service account — no key) or the Gemini API with GEMINI_API_KEY.
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-flash-lite-latest")
+MAX_OUTPUT_TOKENS = int(os.getenv("GEMINI_MAX_OUTPUT_TOKENS", "1500"))  # caps cost per call
+_client = None
+
+
+def _get_client():
+    global _client
+    if _client is None:
+        if os.getenv("GEMINI_USE_VERTEX", "").lower() in ("1", "true", "yes"):
+            _client = genai.Client(
+                vertexai=True,
+                project=os.getenv("GOOGLE_CLOUD_PROJECT"),
+                location=os.getenv("VERTEX_LOCATION", "global"),
+            )
+        else:
+            _client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+    return _client
+
+
+def _part(p):
+    if isinstance(p, dict) and "data" in p:
+        return types.Part.from_bytes(data=p["data"], mime_type=p["mime_type"])
+    return p
+
+
+class _Model:
+    """Small adapter so the functions below keep a generate_content() call."""
+
+    def generate_content(self, contents, generation_config=None, system_instruction=None):
+        if isinstance(contents, list):
+            contents = [_part(c) for c in contents]
+        cfg = {"max_output_tokens": MAX_OUTPUT_TOKENS, **(generation_config or {})}
+        config = types.GenerateContentConfig(system_instruction=system_instruction, **cfg)
+        return _get_client().models.generate_content(model=GEMINI_MODEL, contents=contents, config=config)
+
+
+model = _Model()
 
 
 def check_grammar(text: str, level: int) -> dict:
@@ -138,15 +174,19 @@ def chat_with_ai(message: str, history: list, level: int, scenario: str = "gener
                         "right": "corrected phrase", "why": "one short reason"}}]}}
     Use an empty corrections list if the learner's last message had no real mistakes.
     """
-    chat_model = genai.GenerativeModel(
-        GEMINI_MODEL, system_instruction=system_context,
-        generation_config={"response_mime_type": "application/json"},
-    )
     recent = history[-6:]  # Keep last 6 messages for context
     while recent and recent[0].get("role") != "user":
         recent = recent[1:]  # history must start with a user turn
-    chat = chat_model.start_chat(history=recent)
-    response = chat.send_message(message)
+    contents = [
+        types.Content(role=h["role"], parts=[types.Part.from_text(text=t) for t in h["parts"]])
+        for h in recent
+    ]
+    contents.append(types.Content(role="user", parts=[types.Part.from_text(text=message)]))
+    response = model.generate_content(
+        contents,
+        generation_config={"response_mime_type": "application/json"},
+        system_instruction=system_context,
+    )
     try:
         data = json.loads(response.text)
         return {"reply": str(data.get("reply", "")).strip(), "corrections": data.get("corrections") or []}

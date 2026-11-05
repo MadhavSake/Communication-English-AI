@@ -23,6 +23,8 @@ async def send_message(input: ChatInput):
     """Send a message to the AI conversation partner."""
     if not input.message.strip():
         raise HTTPException(status_code=400, detail="Message cannot be empty")
+    if len(input.message) > 2000:
+        raise HTTPException(status_code=400, detail="Message is too long (max 2000 characters).")
 
     history = [{"role": m.role, "parts": m.parts} for m in input.history]
     result = chat_with_ai(input.message, history, input.level, input.scenario)
