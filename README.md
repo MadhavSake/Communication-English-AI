@@ -22,9 +22,9 @@ An AI-powered English communication improvement platform — from absolute begin
 
 ## Tech Stack
 
-- **Frontend:** React.js → Firebase Hosting
+- **Frontend:** React.js (nginx) → GCP Cloud Run
 - **Backend:** Python FastAPI → GCP Cloud Run
-- **AI:** Google Gemini 1.5 Flash, Speech-to-Text, Vision API
+- **AI:** Google Gemini (model set via `GEMINI_MODEL`, default `gemini-flash-latest`), Speech-to-Text, Text-to-Speech, Vision API
 - **CI/CD:** GitHub Actions
 
 ## Setup
@@ -45,18 +45,39 @@ npm install
 REACT_APP_API_URL=http://localhost:8080 npm start
 ```
 
+## First-time GCP setup (once)
+
+```bash
+# 1. Terraform state bucket
+bash terraform/bootstrap.sh
+
+# 2. Infra: APIs, Artifact Registry, runtime SA, Gemini secret
+cd terraform
+cp terraform.tfvars.example terraform.tfvars   # add gemini_api_key
+terraform init
+terraform apply -target=google_project_service.apis \
+  -target=google_artifact_registry_repository.english_ai \
+  -target=google_service_account.cloud_run_sa \
+  -target=google_project_iam_member.cloud_run_roles \
+  -target=google_secret_manager_secret_version.gemini_api_key \
+  -target=google_secret_manager_secret_iam_member.backend_secret_access
+```
+
+The Cloud Run services themselves are deployed by GitHub Actions (images
+don't exist until the first pipeline run, so a full `terraform apply` before
+that would fail).
+
 ## GitHub Secrets Required
 
 | Secret | Description |
 |--------|-------------|
-| `GEMINI_API_KEY` | Google AI Studio API key |
-| `GCP_PROJECT_ID` | Your GCP project ID |
-| `GCP_SA_KEY` | GCP service account JSON (base64) |
-| `FIREBASE_SERVICE_ACCOUNT` | Firebase service account JSON |
-| `GCP_PROJECT_HASH` | Cloud Run URL hash (from console) |
+| `GCP_WORKLOAD_IDENTITY_PROVIDER` | Full WIF provider resource name |
+| `GCP_SERVICE_ACCOUNT` | Deployer SA email (`english-ai-deployer@<project>.iam.gserviceaccount.com`) |
+
+The Gemini key lives in Secret Manager (`gemini-api-key`), not in GitHub.
 
 ## Deploy
 
-Push to `main` branch → GitHub Actions auto-deploys:
-- Backend → GCP Cloud Run
-- Frontend → Firebase Hosting
+Push to `main` (or run the workflow manually) → GitHub Actions:
+- Backend → Cloud Run `english-ai-backend` (runtime SA `english-ai-runtime`)
+- Frontend → Cloud Run `english-ai-frontend`, built with the backend URL baked in

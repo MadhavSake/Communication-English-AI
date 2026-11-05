@@ -5,7 +5,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-model = genai.GenerativeModel("gemini-1.5-flash")  # Free tier, fast & cheap
+# gemini-1.5-flash has been retired; keep the model configurable via env.
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-flash-latest")
+model = genai.GenerativeModel(GEMINI_MODEL)
 
 
 def check_grammar(text: str, level: int) -> dict:
@@ -146,10 +148,10 @@ def chat_with_ai(message: str, history: list, level: int, scenario: str = "gener
     - If level 1-3, use simple words
     - If level 8-15, use IELTS-style language
     """
-    chat_history = [{"role": "user", "parts": [system_context]}]
-    for h in history[-6:]:  # Keep last 6 messages for context
-        chat_history.append(h)
-    
-    chat = model.start_chat(history=chat_history)
+    chat_model = genai.GenerativeModel(GEMINI_MODEL, system_instruction=system_context)
+    recent = history[-6:]  # Keep last 6 messages for context
+    while recent and recent[0].get("role") != "user":
+        recent = recent[1:]  # history must start with a user turn
+    chat = chat_model.start_chat(history=recent)
     response = chat.send_message(message)
     return response.text

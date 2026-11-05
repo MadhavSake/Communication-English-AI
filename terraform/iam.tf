@@ -10,7 +10,7 @@ locals {
   cloud_run_roles = [
     "roles/speech.client",
     "roles/texttospeech.client",
-    "roles/vision.serviceAgent",
+    "roles/serviceusage.serviceUsageConsumer",
     "roles/secretmanager.secretAccessor",
   ]
 }

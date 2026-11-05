@@ -16,16 +16,23 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Import routers safely
-try:
-    from routers import grammar, audio, vision, content, chat
-    app.include_router(grammar.router, prefix="/api/grammar", tags=["Grammar"])
-    app.include_router(audio.router,   prefix="/api/audio",   tags=["Audio"])
-    app.include_router(vision.router,  prefix="/api/vision",  tags=["Vision"])
-    app.include_router(content.router, prefix="/api/content", tags=["Content"])
-    app.include_router(chat.router,    prefix="/api/chat",    tags=["Chat"])
-except Exception as e:
-    print(f"Warning: Could not load some routers: {e}")
+# Import each router independently so one failing import
+# (e.g. a missing GCP client library) doesn't take down every endpoint.
+import importlib
+
+_ROUTERS = [
+    ("grammar", "/api/grammar", "Grammar"),
+    ("audio",   "/api/audio",   "Audio"),
+    ("vision",  "/api/vision",  "Vision"),
+    ("content", "/api/content", "Content"),
+    ("chat",    "/api/chat",    "Chat"),
+]
+for _name, _prefix, _tag in _ROUTERS:
+    try:
+        _mod = importlib.import_module(f"routers.{_name}")
+        app.include_router(_mod.router, prefix=_prefix, tags=[_tag])
+    except Exception as e:
+        print(f"Warning: could not load router '{_name}': {e}")
 
 @app.get("/")
 def root():
