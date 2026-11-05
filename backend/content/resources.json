@@ -1,0 +1,44 @@
+{
+  "_note": "Each item lists the stages it applies to as [from, to]. Links point to the official site or a search page so they never break. To embed a specific YouTube video in the app, add \"youtube_id\": \"VIDEO_ID\" to a video item.",
+  "books": [
+    {"stages": [1, 2], "title": "Oxford Picture Dictionary", "author": "Jayme Adelson-Goldstein & Norma Shapiro", "description": "Everyday words with pictures — ideal for the first 300–800 words.", "url": "https://openlibrary.org/search?q=Oxford+Picture+Dictionary", "source": "Open Library"},
+    {"stages": [1, 3], "title": "English for Everyone: Level 1 & 2", "author": "DK", "description": "Visual beginner course with exercises for every lesson.", "url": "https://openlibrary.org/search?q=English+for+Everyone+DK", "source": "Open Library"},
+    {"stages": [2, 4], "title": "Essential Grammar in Use", "author": "Raymond Murphy", "description": "The classic elementary grammar book: one rule per page, practice opposite.", "url": "https://openlibrary.org/search?q=Essential+Grammar+in+Use+Murphy", "source": "Open Library"},
+    {"stages": [2, 4], "title": "Aesop's Fables", "author": "Aesop", "description": "Very short moral stories — great first reading practice. Free (public domain).", "url": "https://www.gutenberg.org/ebooks/search/?query=Aesop%27s+Fables", "source": "Project Gutenberg"},
+    {"stages": [3, 5], "title": "Oxford Bookworms Library (Stages 1–3)", "author": "Various", "description": "Graded readers: famous stories rewritten with controlled vocabulary.", "url": "https://openlibrary.org/search?q=Oxford+Bookworms", "source": "Open Library"},
+    {"stages": [4, 6], "title": "English Grammar in Use", "author": "Raymond Murphy", "description": "Intermediate grammar reference and practice — tenses, conditionals, passive.", "url": "https://openlibrary.org/search?q=English+Grammar+in+Use+Murphy", "source": "Open Library"},
+    {"stages": [5, 6], "title": "The Adventures of Sherlock Holmes", "author": "Arthur Conan Doyle", "description": "Short detective stories — natural English and rich vocabulary. Free (public domain).", "url": "https://www.gutenberg.org/ebooks/search/?query=Adventures+of+Sherlock+Holmes", "source": "Project Gutenberg"},
+    {"stages": [5, 6], "title": "Word Power Made Easy", "author": "Norman Lewis", "description": "Builds advanced vocabulary through word roots — popular with Indian learners.", "url": "https://openlibrary.org/search?q=Word+Power+Made+Easy", "source": "Open Library"},
+    {"stages": [6, 8], "title": "The Official Cambridge Guide to IELTS", "author": "Pauline Cullen et al.", "description": "Complete guide to all four IELTS skills with practice tests.", "url": "https://openlibrary.org/search?q=Official+Cambridge+Guide+to+IELTS", "source": "Open Library"},
+    {"stages": [7, 8], "title": "Cambridge IELTS (Authentic Practice Tests)", "author": "Cambridge University Press", "description": "Real past-paper style tests — use for timed mock practice.", "url": "https://openlibrary.org/search?q=Cambridge+IELTS", "source": "Open Library"},
+    {"stages": [7, 8], "title": "IELTS free practice tests", "author": "IELTS (official)", "description": "Official sample tasks for Listening, Reading, Writing and Speaking.", "url": "https://ielts.org", "source": "ielts.org"},
+    {"stages": [9, 10], "title": "Business English Vocabulary in Use", "author": "Bill Mascull", "description": "Workplace vocabulary: meetings, finance, marketing, negotiations.", "url": "https://openlibrary.org/search?q=Business+Vocabulary+in+Use", "source": "Open Library"},
+    {"stages": [9, 10], "title": "HBR Guide to Better Business Writing", "author": "Bryan A. Garner", "description": "Clear, professional emails, reports and proposals.", "url": "https://openlibrary.org/search?q=HBR+Guide+to+Better+Business+Writing", "source": "Open Library"},
+    {"stages": [10, 12], "title": "Getting to Yes", "author": "Roger Fisher & William Ury", "description": "The classic book on negotiation and persuasion.", "url": "https://openlibrary.org/search?q=Getting+to+Yes", "source": "Open Library"},
+    {"stages": [11, 12], "title": "Talk Like TED", "author": "Carmine Gallo", "description": "Public speaking lessons from the best TED talks.", "url": "https://openlibrary.org/search?q=Talk+Like+TED", "source": "Open Library"},
+    {"stages": [11, 12], "title": "The Art of Public Speaking", "author": "Dale Carnegie", "description": "Timeless advice on confidence, voice and delivery. Free (public domain).", "url": "https://www.gutenberg.org/ebooks/search/?query=Art+of+Public+Speaking+Carnegie", "source": "Project Gutenberg"}
+  ],
+  "videos": [
+    {"stages": [1, 2], "title": "English alphabet & phonics for beginners", "description": "Letter sounds, vowels and consonants.", "url": "https://www.youtube.com/results?search_query=english+alphabet+phonics+for+adult+beginners", "platform": "YouTube"},
+    {"stages": [1, 3], "title": "Spoken English in Hindi — basics", "description": "Beginner lessons explained in Hindi.", "url": "https://www.youtube.com/results?search_query=spoken+english+for+beginners+in+hindi", "platform": "YouTube"},
+    {"stages": [2, 6], "title": "BBC Learning English", "description": "Short grammar, vocabulary and pronunciation lessons.", "url": "https://www.youtube.com/@bbclearningenglish", "platform": "YouTube"},
+    {"stages": [2, 6], "title": "British Council LearnEnglish videos", "description": "Grammar and everyday English videos with exercises.", "url": "https://learnenglish.britishcouncil.org", "platform": "Web"},
+    {"stages": [3, 6], "title": "English tenses explained", "description": "Present, past and future tenses with examples.", "url": "https://www.youtube.com/results?search_query=english+tenses+explained", "platform": "YouTube"},
+    {"stages": [4, 6], "title": "Pronunciation — word & sentence stress", "description": "Stress and intonation practice.", "url": "https://www.youtube.com/results?search_query=english+word+stress+sentence+stress+intonation", "platform": "YouTube"},
+    {"stages": [7, 8], "title": "IELTS Listening & Reading strategies", "description": "Question types and time management.", "url": "https://www.youtube.com/results?search_query=IELTS+listening+reading+strategies", "platform": "YouTube"},
+    {"stages": [7, 8], "title": "IELTS Speaking — band 8/9 sample answers", "description": "Real-style Part 1, 2 and 3 answers.", "url": "https://www.youtube.com/results?search_query=IELTS+speaking+band+9+sample", "platform": "YouTube"},
+    {"stages": [8, 8], "title": "IELTS Writing Task 1 & 2", "description": "Structure, vocabulary and examiner tips.", "url": "https://www.youtube.com/results?search_query=IELTS+writing+task+2+band+9", "platform": "YouTube"},
+    {"stages": [9, 10], "title": "Business English — meetings & emails", "description": "Phrases for meetings, calls and professional emails.", "url": "https://www.youtube.com/results?search_query=business+english+meetings+emails", "platform": "YouTube"},
+    {"stages": [9, 10], "title": "Job interview English", "description": "Common HR and technical interview answers.", "url": "https://www.youtube.com/results?search_query=job+interview+english+answers", "platform": "YouTube"},
+    {"stages": [10, 12], "title": "TED Talks", "description": "World-class speakers — study structure, voice and body language.", "url": "https://www.ted.com/talks", "platform": "TED"},
+    {"stages": [11, 12], "title": "Public speaking & body language", "description": "Stage confidence, gestures, eye contact.", "url": "https://www.youtube.com/results?search_query=public+speaking+body+language+tips", "platform": "YouTube"}
+  ],
+  "audio": [
+    {"stages": [1, 3], "title": "VOA Learning English — Let's Learn English", "description": "Very slow, clear beginner lessons with transcripts.", "url": "https://learningenglish.voanews.com", "type": "listening"},
+    {"stages": [2, 5], "title": "BBC 6 Minute English", "description": "Short discussions on everyday topics with new vocabulary.", "url": "https://www.bbc.co.uk/learningenglish", "type": "listening"},
+    {"stages": [2, 6], "title": "British Council podcasts", "description": "Conversations with transcripts and exercises.", "url": "https://learnenglish.britishcouncil.org", "type": "listening"},
+    {"stages": [4, 6], "title": "VOA Learning English — news in slow English", "description": "Real news read slowly — build listening speed.", "url": "https://learningenglish.voanews.com", "type": "news"},
+    {"stages": [7, 8], "title": "IELTS Listening practice", "description": "Official sample listening tasks.", "url": "https://ielts.org", "type": "test"},
+    {"stages": [9, 12], "title": "TED Talks (audio)", "description": "Listen for structure, vocabulary and delivery.", "url": "https://www.ted.com/talks", "type": "academic"}
+  ]
+}

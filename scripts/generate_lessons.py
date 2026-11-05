@@ -132,7 +132,7 @@ def main():
         sys.exit("Set GEMINI_API_KEY and FIREBASE_PROJECT first (see the top of this file).")
 
     genai.configure(api_key=key)
-    model = genai.GenerativeModel(os.environ.get("GEMINI_MODEL", "gemini-flash-latest"))
+    model = genai.GenerativeModel(os.environ.get("GEMINI_MODEL", "gemini-flash-lite-latest"))
     db = firestore.Client(project=project)
 
     done = skipped = failed = 0

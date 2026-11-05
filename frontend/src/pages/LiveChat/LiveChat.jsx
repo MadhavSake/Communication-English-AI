@@ -37,7 +37,15 @@ export default function LiveChat() {
     try {
       const res = await sendChatMessage(userMsg, history, level, scenario);
       recordActivity('chat');
-      setMessages((prev) => [...prev, { role: 'model', text: res.data.response }]);
+      const corrections = res.data.corrections || [];
+      setMessages((prev) => {
+        const next = [...prev];
+        // attach corrections to the learner's message they refer to
+        for (let k = next.length - 1; k >= 0; k -= 1) {
+          if (next[k].role === 'user') { next[k] = { ...next[k], corrections }; break; }
+        }
+        return [...next, { role: 'model', text: res.data.response }];
+      });
     } catch {
       setMessages((prev) => [...prev, { role: 'model', text: 'Sorry, I had trouble responding. Please try again.' }]);
     } finally {
@@ -95,7 +103,23 @@ export default function LiveChat() {
             {messages.map((m, i) => (
               <div key={i} className={`message ${m.role === 'user' ? 'user-msg' : 'ai-msg'}`}>
                 {m.role === 'model' && <div className="ai-avatar">🤖</div>}
-                <div className="msg-bubble">{m.text}</div>
+                <div className="msg-col">
+                  <div className="msg-bubble">{m.text}</div>
+                  {m.corrections?.length > 0 && (
+                    <div className="msg-corrections">
+                      {m.corrections.map((c, ci) => (
+                        <div key={ci} className="mc-item">
+                          <span className="err-wrong">✗ {c.wrong}</span>
+                          <span className="err-correct">✓ {c.right}</span>
+                          {c.why && <span className="mc-why">{c.why}</span>}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {m.role === 'user' && m.corrections && m.corrections.length === 0 && (
+                    <div className="mc-ok">✓ No mistakes</div>
+                  )}
+                </div>
                 {m.role === 'user' && <div className="user-avatar">👤</div>}
               </div>
             ))}

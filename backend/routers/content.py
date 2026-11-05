@@ -3,7 +3,17 @@ from typing import Optional
 
 router = APIRouter()
 
+import json
+from pathlib import Path
 from services.syllabus import STAGES, RULES, stage as get_stage
+
+_RES = json.loads((Path(__file__).resolve().parent.parent / "content" / "resources.json").read_text(encoding="utf-8"))
+
+
+def _for_stage(kind: str, level: int) -> list:
+    n = get_stage(level)["stage"]
+    return [{k: v for k, v in item.items() if k != "stages"}
+            for item in _RES[kind] if item["stages"][0] <= n <= item["stages"][1]]
 
 # Stage metadata (kept under the old "levels" name so the API shape is unchanged)
 LEVELS = {
@@ -20,52 +30,8 @@ LEVELS = {
 
 # Curated content per level
 
-BOOKS = {
-    1: [
-        {"title": "Oxford Picture Dictionary", "author": "Oxford", "level": "Beginner", "description": "Visual vocabulary learning"},
-        {"title": "English for Everyone: Level 1", "author": "DK", "level": "Beginner", "description": "Complete beginner course"},
-    ],
-    2: [
-        {"title": "Grammar in Use (Elementary)", "author": "Raymond Murphy", "level": "Elementary", "description": "Cambridge grammar practice"},
-        {"title": "Headway Elementary", "author": "Oxford", "level": "Elementary", "description": "Skills-based learning"},
-    ],
-    8: [
-        {"title": "Cambridge IELTS 1-18", "author": "Cambridge", "level": "IELTS", "description": "Official practice tests"},
-        {"title": "IELTS Academic 5 Practice Tests", "author": "Simone Braverman", "level": "IELTS", "description": "Strategy focused"},
-        {"title": "The Official Cambridge Guide to IELTS", "author": "Cambridge", "level": "IELTS", "description": "Complete guide"},
-    ],
-}
 
-AUDIO = {
-    1: [
-        {"title": "Alphabet Song", "description": "Learn pronunciation of all 26 letters", "duration": "3 min", "type": "pronunciation"},
-        {"title": "Basic Greetings Audio", "description": "Native speaker greetings", "duration": "5 min", "type": "conversation"},
-    ],
-    3: [
-        {"title": "BBC Learning English - 6 Minute Grammar", "description": "Grammar explained simply", "duration": "6 min", "type": "grammar", "url": "https://www.bbc.co.uk/learningenglish"},
-        {"title": "Slow English Podcast", "description": "Clear, slow English for learners", "duration": "10 min", "type": "listening"},
-    ],
-    8: [
-        {"title": "IELTS Listening Practice Test", "description": "Official-style listening test", "duration": "40 min", "type": "test"},
-        {"title": "TED Talks - Academic English", "description": "Native speaker academic vocabulary", "duration": "15 min", "type": "academic"},
-    ],
-}
 
-VIDEOS = {
-    1: [
-        {"title": "English Alphabet for Beginners", "platform": "YouTube", "duration": "8 min", "topic": "alphabet"},
-        {"title": "Basic English Conversations", "platform": "YouTube", "duration": "12 min", "topic": "conversation"},
-    ],
-    5: [
-        {"title": "English with Lucy - Fluency Tips", "platform": "YouTube", "duration": "15 min", "topic": "fluency"},
-        {"title": "BBC Learning English", "platform": "YouTube", "duration": "10 min", "topic": "grammar"},
-    ],
-    8: [
-        {"title": "IELTS Speaking Band 9 Sample", "platform": "YouTube", "duration": "20 min", "topic": "IELTS speaking"},
-        {"title": "IELTS Writing Task 2 - Band 9 Essay", "platform": "YouTube", "duration": "25 min", "topic": "IELTS writing"},
-        {"title": "IELTS Listening - Official Tips", "platform": "YouTube", "duration": "30 min", "topic": "IELTS listening"},
-    ],
-}
 
 
 @router.get("/levels")
@@ -97,17 +63,14 @@ async def get_syllabus():
 
 @router.get("/books/{level}")
 async def get_books(level: int):
-    books = BOOKS.get(level, BOOKS.get(min(BOOKS.keys(), key=lambda k: abs(k - level)), []))
-    return {"level": level, "books": books}
+    return {"level": get_stage(level)["stage"], "books": _for_stage("books", level)}
 
 
 @router.get("/audio/{level}")
 async def get_audio(level: int):
-    audio = AUDIO.get(level, AUDIO.get(min(AUDIO.keys(), key=lambda k: abs(k - level)), []))
-    return {"level": level, "audio": audio}
+    return {"level": get_stage(level)["stage"], "audio": _for_stage("audio", level)}
 
 
 @router.get("/videos/{level}")
 async def get_videos(level: int):
-    videos = VIDEOS.get(level, VIDEOS.get(min(VIDEOS.keys(), key=lambda k: abs(k - level)), []))
-    return {"level": level, "videos": videos}
+    return {"level": get_stage(level)["stage"], "videos": _for_stage("videos", level)}

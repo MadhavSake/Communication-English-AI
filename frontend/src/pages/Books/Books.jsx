@@ -25,8 +25,11 @@ export default function Books() {
             <div className="book-info">
               <h3>{book.title}</h3>
               <div className="book-author">by {book.author}</div>
-              <div className="book-badge">{book.level}</div>
+              {book.source && <div className="book-badge">{book.source}</div>}
               <p>{book.description}</p>
+              {book.url && (
+                <a className="open-link" href={book.url} target="_blank" rel="noopener noreferrer">Open ↗</a>
+              )}
             </div>
           </div>
         ))}
@@ -35,7 +38,7 @@ export default function Books() {
       {books.length === 0 && (
         <div className="empty-state card">
           <div style={{ fontSize: 48 }}>📚</div>
-          <p>Loading books for your level...</p>
+          <p>Loading books for your stage...</p>
         </div>
       )}
     </div>

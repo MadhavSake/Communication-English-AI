@@ -156,7 +156,9 @@ export default function AudioPractice() {
                     <div className="transcript-box">
                       <div className="transcript-label">📝 What you said:</div>
                       <div className="transcript-text">"{result.transcription.transcript}"</div>
-                      <div className="confidence">Confidence: {result.transcription.confidence}%</div>
+                      {result.transcription.confidence != null && (
+                        <div className="confidence">Confidence: {result.transcription.confidence}%</div>
+                      )}
                     </div>
                   )}
 
@@ -196,6 +198,32 @@ export default function AudioPractice() {
                       )}
 
                       <div className="feedback-text">{result.analysis.detailed_feedback}</div>
+
+                      {(result.analysis.pronunciation_score != null || result.analysis.pace || result.analysis.tone_feedback) && (
+                        <div className="voice-box">
+                          {result.analysis.pronunciation_score != null && (
+                            <div>🗣️ Pronunciation: <strong>{result.analysis.pronunciation_score}</strong>/100</div>
+                          )}
+                          {result.analysis.pace && <div>⏩ Pace: {result.analysis.pace}</div>}
+                          {result.analysis.tone_feedback && <div>🎵 Tone: {result.analysis.tone_feedback}</div>}
+                        </div>
+                      )}
+
+                      {result.analysis.grammar_mistakes?.length > 0 && (
+                        <div className="feedback-list">
+                          <h4>📝 Grammar corrections</h4>
+                          {result.analysis.grammar_mistakes.map((m, i) => (
+                            <div key={i} className="fl-item tip">✗ {m.wrong} → ✓ {m.right}{m.why ? ` — ${m.why}` : ''}</div>
+                          ))}
+                        </div>
+                      )}
+
+                      {result.analysis.pronunciation_tips?.length > 0 && (
+                        <div className="feedback-list">
+                          <h4>🔊 Pronunciation tips</h4>
+                          {result.analysis.pronunciation_tips.map((t, i) => <div key={i} className="fl-item tip">{t}</div>)}
+                        </div>
+                      )}
 
                       {result.analysis.strengths?.length > 0 && (
                         <div className="feedback-list">

@@ -30,14 +30,20 @@ export default function Videos() {
         <div className="content-grid">
           {videos.map((v, i) => (
             <div key={i} className="content-card card">
-              <div className="content-thumb video-thumb">▶</div>
+              {v.youtube_id ? (
+                <iframe className="video-embed" title={v.title} loading="lazy" allowFullScreen
+                  src={`https://www.youtube-nocookie.com/embed/${v.youtube_id}`}
+                  allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" />
+              ) : (
+                <div className="content-thumb video-thumb">▶</div>
+              )}
               <div className="content-info">
                 <h3>{v.title}</h3>
                 <div className="content-meta">
                   <span>📺 {v.platform}</span>
-                  <span>⏱ {v.duration}</span>
                 </div>
-                <div className="content-topic">{v.topic}</div>
+                <p>{v.description}</p>
+                {v.url && <a className="open-link" href={v.url} target="_blank" rel="noopener noreferrer">Watch ↗</a>}
               </div>
             </div>
           ))}
@@ -52,10 +58,10 @@ export default function Videos() {
               <div className="content-info">
                 <h3>{a.title}</h3>
                 <div className="content-meta">
-                  <span>⏱ {a.duration}</span>
                   <span className="type-badge">{a.type}</span>
                 </div>
                 <p>{a.description}</p>
+                {a.url && <a className="open-link" href={a.url} target="_blank" rel="noopener noreferrer">Listen ↗</a>}
               </div>
             </div>
           ))}

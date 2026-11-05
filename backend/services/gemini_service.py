@@ -7,7 +7,7 @@ load_dotenv()
 
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 # gemini-1.5-flash has been retired; keep the model configurable via env.
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-flash-latest")
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-flash-lite-latest")  # free tier
 model = genai.GenerativeModel(GEMINI_MODEL)
 
 
@@ -121,22 +121,64 @@ def analyze_audio_transcript(transcript: str, level: int) -> dict:
     return {"error": "Could not parse response"}
 
 
-def chat_with_ai(message: str, history: list, level: int, scenario: str = "general") -> str:
-    """AI conversation partner for practice."""
+def chat_with_ai(message: str, history: list, level: int, scenario: str = "general") -> dict:
+    """AI conversation partner: replies in character and lists the learner's mistakes."""
+    import json
     system_context = f"""
     You are a friendly English conversation partner helping a learner at {describe(level)} practice.
     Scenario: {scenario}
-    - Keep responses appropriate for their level
-    - Gently correct major mistakes inline
-    - Be encouraging and supportive
+    - Stay in the scenario and keep the conversation going with a question.
     - Stages 1-3: use very simple words and short sentences
     - Stages 7-8: use IELTS-style language
     - Stages 9-12: use professional and business English
+    - Be encouraging and supportive.
+    Respond ONLY with JSON:
+    {{"reply": "your next message in the conversation",
+      "corrections": [{{"wrong": "exact mistaken phrase from the learner's LAST message",
+                        "right": "corrected phrase", "why": "one short reason"}}]}}
+    Use an empty corrections list if the learner's last message had no real mistakes.
     """
-    chat_model = genai.GenerativeModel(GEMINI_MODEL, system_instruction=system_context)
+    chat_model = genai.GenerativeModel(
+        GEMINI_MODEL, system_instruction=system_context,
+        generation_config={"response_mime_type": "application/json"},
+    )
     recent = history[-6:]  # Keep last 6 messages for context
     while recent and recent[0].get("role") != "user":
         recent = recent[1:]  # history must start with a user turn
     chat = chat_model.start_chat(history=recent)
     response = chat.send_message(message)
-    return response.text
+    try:
+        data = json.loads(response.text)
+        return {"reply": str(data.get("reply", "")).strip(), "corrections": data.get("corrections") or []}
+    except (ValueError, AttributeError):
+        return {"reply": response.text, "corrections": []}
+
+
+def analyze_audio_file(audio_bytes: bytes, mime_type: str, level: int) -> dict:
+    """Listen to a recording with Gemini and return transcript + speaking feedback."""
+    import json
+    prompt = f"""
+    You are an English speaking coach. Listen to this recording of a learner at {describe(level)}.
+    Respond ONLY with JSON:
+    {{
+        "transcript": "exactly what the learner said",
+        "grammar_score": 0-100, "fluency_score": 0-100, "vocabulary_score": 0-100,
+        "pronunciation_score": 0-100, "overall_score": 0-100,
+        "grammar_mistakes": [{{"wrong": "phrase", "right": "correction", "why": "short reason"}}],
+        "pronunciation_tips": ["specific word and how to say it better"],
+        "tone_feedback": "comment on tone, confidence, intonation and energy",
+        "pace": "too slow / good / too fast, with one short comment",
+        "filler_words_detected": ["um", "like"],
+        "filler_word_count": 0,
+        "strengths": ["..."],
+        "improvements": ["..."],
+        "ielts_equivalent_band": "e.g. 5.5 (only for stages 6-8, otherwise empty)",
+        "detailed_feedback": "2-4 encouraging sentences with the most important advice"
+    }}
+    If the recording has no clear speech, return an empty transcript.
+    """
+    response = model.generate_content(
+        [prompt, {"mime_type": mime_type, "data": audio_bytes}],
+        generation_config={"response_mime_type": "application/json"},
+    )
+    return json.loads(response.text)

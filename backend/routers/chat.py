@@ -25,10 +25,11 @@ async def send_message(input: ChatInput):
         raise HTTPException(status_code=400, detail="Message cannot be empty")
 
     history = [{"role": m.role, "parts": m.parts} for m in input.history]
-    response = chat_with_ai(input.message, history, input.level, input.scenario)
+    result = chat_with_ai(input.message, history, input.level, input.scenario)
 
     return {
-        "response": response,
+        "response": result["reply"],
+        "corrections": result["corrections"],
         "scenario": input.scenario,
         "level": input.level,
     }

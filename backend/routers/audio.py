@@ -1,7 +1,6 @@
 from fastapi import APIRouter, UploadFile, File, HTTPException, Form
 from fastapi.responses import Response
-from services.speech_service import transcribe_audio, text_to_speech
-from services.gemini_service import analyze_audio_transcript
+from services.gemini_service import analyze_audio_file
 
 router = APIRouter()
 
@@ -16,22 +15,22 @@ async def analyze_audio(
         raise HTTPException(status_code=400, detail="File must be an audio file")
 
     audio_bytes = await audio.read()
+    if len(audio_bytes) > 15 * 1024 * 1024:
+        raise HTTPException(status_code=413, detail="Recording is too long. Please keep it under 3 minutes.")
 
-    # Step 1: Transcribe
-    transcription = transcribe_audio(audio_bytes)
+    mime = audio.content_type.split(";")[0]
+    analysis = analyze_audio_file(audio_bytes, mime, level)
+    transcript = (analysis.pop("transcript", "") or "").strip()
 
-    if not transcription.get("transcript"):
+    if not transcript:
         return {
             "success": False,
-            "message": "Could not transcribe audio. Please speak clearly and try again."
+            "message": "Could not hear clear speech. Please speak clearly and try again."
         }
-
-    # Step 2: AI analysis of transcript
-    analysis = analyze_audio_transcript(transcription["transcript"], level)
 
     return {
         "success": True,
-        "transcription": transcription,
+        "transcription": {"transcript": transcript},
         "analysis": analysis,
     }
 
@@ -42,5 +41,6 @@ async def text_to_speech_endpoint(text: str = Form(...)):
     if not text.strip():
         raise HTTPException(status_code=400, detail="Text cannot be empty")
 
+    from services.speech_service import text_to_speech  # Cloud TTS, loaded only when used
     audio_bytes = text_to_speech(text)
     return Response(content=audio_bytes, media_type="audio/mpeg")
