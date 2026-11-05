@@ -1,7 +1,10 @@
 {
   "rules": {
     "core_stages": 10,
-    "optional_stages": [11, 12],
+    "optional_stages": [
+      11,
+      12
+    ],
     "optional_unlock_after_stage": 6,
     "stage_exam_pass_mark": 60,
     "stage_exam_total": 100,
@@ -22,16 +25,56 @@
       "vocab_target": 300,
       "optional": false,
       "modules": [
-        {"name": "Alphabet", "topics": "A–Z, capital and small letters", "outcome": "Recognise all letters"},
-        {"name": "Phonics", "topics": "Vowels, consonants, letter sounds", "outcome": "Understand basic pronunciation"},
-        {"name": "First Vocabulary", "topics": "Animals, fruits, vegetables, colours, numbers, body parts", "outcome": "Learn first 300 words"},
-        {"name": "Basic Expressions", "topics": "Hello, Good morning, Thank you, Sorry, Please", "outcome": "Use basic expressions"},
-        {"name": "Pronouns", "topics": "I, You, He, She, It, We, They", "outcome": "Identify people and objects"},
-        {"name": "Basic Verbs", "topics": "Eat, Drink, Walk, Run, Sleep, Go, Come", "outcome": "Understand common actions"},
-        {"name": "Basic Sentences", "topics": "I am happy. I eat food. This is a tree.", "outcome": "Speak simple sentences"},
-        {"name": "Reading Words", "topics": "Two-letter and three-letter words", "outcome": "Read simple words"},
-        {"name": "Writing Basics", "topics": "Alphabet, words and names", "outcome": "Write basic English"},
-        {"name": "Self-Introduction", "topics": "Self-introduction and greetings", "outcome": "Introduce themselves"}
+        {
+          "name": "Alphabet",
+          "topics": "A–Z, capital and small letters",
+          "outcome": "Recognise all letters"
+        },
+        {
+          "name": "Phonics",
+          "topics": "Vowels, consonants, letter sounds",
+          "outcome": "Understand basic pronunciation"
+        },
+        {
+          "name": "First Vocabulary",
+          "topics": "Animals, fruits, vegetables, colours, numbers, body parts",
+          "outcome": "Learn first 300 words"
+        },
+        {
+          "name": "Basic Expressions",
+          "topics": "Hello, Good morning, Thank you, Sorry, Please",
+          "outcome": "Use basic expressions"
+        },
+        {
+          "name": "Pronouns",
+          "topics": "I, You, He, She, It, We, They",
+          "outcome": "Identify people and objects"
+        },
+        {
+          "name": "Basic Verbs",
+          "topics": "Eat, Drink, Walk, Run, Sleep, Go, Come",
+          "outcome": "Understand common actions"
+        },
+        {
+          "name": "Basic Sentences",
+          "topics": "I am happy. I eat food. This is a tree.",
+          "outcome": "Speak simple sentences"
+        },
+        {
+          "name": "Reading Words",
+          "topics": "Two-letter and three-letter words",
+          "outcome": "Read simple words"
+        },
+        {
+          "name": "Writing Basics",
+          "topics": "Alphabet, words and names",
+          "outcome": "Write basic English"
+        },
+        {
+          "name": "Self-Introduction",
+          "topics": "Self-introduction and greetings",
+          "outcome": "Introduce themselves"
+        }
       ]
     },
     {
@@ -41,18 +84,66 @@
       "vocab_target": 800,
       "optional": false,
       "modules": [
-        {"name": "Nouns", "topics": "Common and proper nouns", "outcome": "Identify naming words"},
-        {"name": "Pronouns", "topics": "Personal and possessive pronouns", "outcome": "Use pronouns correctly"},
-        {"name": "Verbs", "topics": "Action and helping verbs", "outcome": "Form basic sentences"},
-        {"name": "Adjectives", "topics": "Describing words", "outcome": "Describe people and objects"},
-        {"name": "Articles", "topics": "A, An, The", "outcome": "Use articles correctly"},
-        {"name": "Prepositions", "topics": "In, On, Under, Behind, Between", "outcome": "Describe positions"},
-        {"name": "Be & Have", "topics": "Is, Am, Are, Was, Were, Has, Have", "outcome": "Form correct sentences"},
-        {"name": "Simple Tenses", "topics": "Simple Present, Past and Future", "outcome": "Express time"},
-        {"name": "Everyday Vocabulary", "topics": "Family, home, school, food, shopping, travel", "outcome": "Learn everyday words"},
-        {"name": "Daily Conversation", "topics": "Daily routine, family and shopping conversations", "outcome": "Communicate in daily situations"},
-        {"name": "Reading Short Stories", "topics": "Short stories and paragraphs", "outcome": "Understand basic passages"},
-        {"name": "Paragraph Writing", "topics": "5–10 sentence paragraphs", "outcome": "Write about familiar topics"}
+        {
+          "name": "Nouns",
+          "topics": "Common, proper, concrete, abstract, collective and material nouns; countable vs uncountable",
+          "outcome": "Identify naming words"
+        },
+        {
+          "name": "Pronouns",
+          "topics": "Personal and possessive pronouns",
+          "outcome": "Use pronouns correctly"
+        },
+        {
+          "name": "Verbs",
+          "topics": "Action and helping verbs",
+          "outcome": "Form basic sentences"
+        },
+        {
+          "name": "Adjectives",
+          "topics": "Describing words; kinds of adjectives (quality, quantity, number, demonstrative, possessive) and their order",
+          "outcome": "Describe people and objects"
+        },
+        {
+          "name": "Articles",
+          "topics": "A, An, The — when to use each, when no article is needed, common fixed phrases",
+          "outcome": "Use articles correctly"
+        },
+        {
+          "name": "Prepositions",
+          "topics": "Place and position (in, on, under, behind, between), time (at, on, in), direction; common preposition list",
+          "outcome": "Describe positions"
+        },
+        {
+          "name": "Be & Have",
+          "topics": "Is, Am, Are, Was, Were, Has, Have",
+          "outcome": "Form correct sentences"
+        },
+        {
+          "name": "Simple Tenses",
+          "topics": "Simple Present, Past and Future",
+          "outcome": "Express time"
+        },
+        {
+          "name": "Everyday Vocabulary",
+          "topics": "Family, home, school, food, shopping, travel",
+          "outcome": "Learn everyday words"
+        },
+        {
+          "name": "Daily Conversation",
+          "topics": "Daily routine, family and shopping conversations",
+          "outcome": "Communicate in daily situations"
+        },
+        {
+          "name": "Reading Short Stories",
+          "topics": "Short stories and paragraphs",
+          "outcome": "Understand basic passages"
+        },
+        {
+          "name": "Paragraph Writing",
+          "topics": "5–10 sentence paragraphs",
+          "outcome": "Write about familiar topics"
+        }
       ]
     },
     {
@@ -62,12 +153,41 @@
       "vocab_target": 1400,
       "optional": false,
       "modules": [
-        {"name": "Parts of Speech", "topics": "All eight parts of speech", "outcome": "Understand grammar structure"},
-        {"name": "Basic Tenses", "topics": "All basic tense forms", "outcome": "Express past, present and future"},
-        {"name": "Sentence Formation", "topics": "Positive, negative and interrogative sentences", "outcome": "Form different sentence types"},
-        {"name": "Listening Basics", "topics": "Conversations, stories and instructions", "outcome": "Understand spoken English"},
-        {"name": "Reading Stories & Articles", "topics": "Stories, articles and short newspapers", "outcome": "Improve reading comprehension"},
-        {"name": "Storytelling", "topics": "Storytelling and giving simple opinions", "outcome": "Speak for 2–3 minutes"}
+        {
+          "name": "Parts of Speech",
+          "topics": "All eight parts of speech",
+          "outcome": "Understand grammar structure"
+        },
+        {
+          "name": "Basic Tenses",
+          "topics": "All basic tense forms",
+          "outcome": "Express past, present and future"
+        },
+        {
+          "name": "Sentence Formation",
+          "topics": "Positive, negative and interrogative sentences",
+          "outcome": "Form different sentence types"
+        },
+        {
+          "name": "Listening Basics",
+          "topics": "Conversations, stories and instructions",
+          "outcome": "Understand spoken English"
+        },
+        {
+          "name": "Reading Stories & Articles",
+          "topics": "Stories, articles and short newspapers",
+          "outcome": "Improve reading comprehension"
+        },
+        {
+          "name": "Storytelling",
+          "topics": "Storytelling and giving simple opinions",
+          "outcome": "Speak for 2–3 minutes"
+        },
+        {
+          "name": "Degrees of Comparison",
+          "topics": "Positive, comparative and superlative; -er/-est and more/most rules; spelling changes; irregular forms (good–better–best); comparison sentences (as…as, than)",
+          "outcome": "Compare people and things correctly"
+        }
       ]
     },
     {
@@ -77,13 +197,41 @@
       "vocab_target": 2000,
       "optional": false,
       "modules": [
-        {"name": "Modals", "topics": "Can, Could, Should, Must, May, Might", "outcome": "Express ability and possibility"},
-        {"name": "Subject-Verb Agreement", "topics": "Singular and plural agreement", "outcome": "Improve grammatical accuracy"},
-        {"name": "Conjunctions", "topics": "And, But, Because, Although", "outcome": "Connect sentences"},
-        {"name": "Vocabulary Building", "topics": "Synonyms, antonyms, phrasal verbs, idioms", "outcome": "Reach 2,000-word vocabulary"},
-        {"name": "Pronunciation", "topics": "Word stress, sentence stress and intonation", "outcome": "Improve speaking clarity"},
-        {"name": "Group Conversation", "topics": "Opinions and group conversations", "outcome": "Speak for 5 minutes"},
-        {"name": "Letters & Diary Writing", "topics": "Paragraphs, letters, diary entries and stories", "outcome": "Write 100–150 words"}
+        {
+          "name": "Modals",
+          "topics": "Can, Could, May, Might, Must, Should, Would, Need, Ought to; ability, permission, possibility, obligation, deduction; semi-modals (have to, be able to, used to); mustn't vs needn't",
+          "outcome": "Express ability and possibility"
+        },
+        {
+          "name": "Subject-Verb Agreement",
+          "topics": "Singular and plural agreement",
+          "outcome": "Improve grammatical accuracy"
+        },
+        {
+          "name": "Conjunctions",
+          "topics": "And, But, Because, Although",
+          "outcome": "Connect sentences"
+        },
+        {
+          "name": "Vocabulary Building",
+          "topics": "Synonyms, antonyms, phrasal verbs, idioms",
+          "outcome": "Reach 2,000-word vocabulary"
+        },
+        {
+          "name": "Pronunciation",
+          "topics": "Word stress, sentence stress and intonation",
+          "outcome": "Improve speaking clarity"
+        },
+        {
+          "name": "Group Conversation",
+          "topics": "Opinions and group conversations",
+          "outcome": "Speak for 5 minutes"
+        },
+        {
+          "name": "Letters & Diary Writing",
+          "topics": "Paragraphs, letters, diary entries and stories",
+          "outcome": "Write 100–150 words"
+        }
       ]
     },
     {
@@ -93,12 +241,36 @@
       "vocab_target": 3000,
       "optional": false,
       "modules": [
-        {"name": "Advanced Tenses", "topics": "All 12 tense forms", "outcome": "Use tenses accurately"},
-        {"name": "Conditional Sentences", "topics": "Zero, First, Second and Third Conditionals", "outcome": "Express hypothetical situations"},
-        {"name": "Active and Passive Voice", "topics": "Different sentence structures", "outcome": "Improve sentence variety"},
-        {"name": "Direct and Indirect Speech", "topics": "Reported statements and questions", "outcome": "Report conversations"},
-        {"name": "Listening to Accents", "topics": "Different accents and longer conversations", "outcome": "Understand natural English"},
-        {"name": "Discussions", "topics": "Discussions and explanations", "outcome": "Speak for 5–10 minutes"}
+        {
+          "name": "Advanced Tenses",
+          "topics": "All 12 tense forms",
+          "outcome": "Use tenses accurately"
+        },
+        {
+          "name": "Conditional Sentences",
+          "topics": "Zero, First, Second and Third Conditionals",
+          "outcome": "Express hypothetical situations"
+        },
+        {
+          "name": "Active and Passive Voice",
+          "topics": "Active vs passive structure; passive forms in every tense; passive with modals; when to use passive",
+          "outcome": "Improve sentence variety"
+        },
+        {
+          "name": "Direct and Indirect Speech",
+          "topics": "Reported statements, questions and commands; tense back-shift rules; changes in pronouns, modals and time/place words (now→then, today→that day, here→there)",
+          "outcome": "Report conversations"
+        },
+        {
+          "name": "Listening to Accents",
+          "topics": "Different accents and longer conversations",
+          "outcome": "Understand natural English"
+        },
+        {
+          "name": "Discussions",
+          "topics": "Discussions and explanations",
+          "outcome": "Speak for 5–10 minutes"
+        }
       ]
     },
     {
@@ -108,13 +280,41 @@
       "vocab_target": 4000,
       "optional": false,
       "modules": [
-        {"name": "Complex Sentences", "topics": "Relative clauses, subordinate clauses", "outcome": "Build advanced sentences"},
-        {"name": "Gerunds and Infinitives", "topics": "Verb patterns", "outcome": "Improve grammar"},
-        {"name": "Advanced Vocabulary", "topics": "Academic and professional vocabulary", "outcome": "Reach 4,000-word vocabulary"},
-        {"name": "Advanced Reading", "topics": "Editorials, articles and academic passages", "outcome": "Understand complex content"},
-        {"name": "Essay Writing", "topics": "Argumentative and descriptive essays", "outcome": "Write structured essays"},
-        {"name": "Presentations", "topics": "Short presentations and explanations", "outcome": "Present a topic for 5–10 minutes"},
-        {"name": "IELTS Foundation", "topics": "Exam structure and band descriptors", "outcome": "Understand IELTS requirements"}
+        {
+          "name": "Complex Sentences",
+          "topics": "Relative clauses, subordinate clauses",
+          "outcome": "Build advanced sentences"
+        },
+        {
+          "name": "Gerunds and Infinitives",
+          "topics": "Verb patterns",
+          "outcome": "Improve grammar"
+        },
+        {
+          "name": "Advanced Vocabulary",
+          "topics": "Academic and professional vocabulary",
+          "outcome": "Reach 4,000-word vocabulary"
+        },
+        {
+          "name": "Advanced Reading",
+          "topics": "Editorials, articles and academic passages",
+          "outcome": "Understand complex content"
+        },
+        {
+          "name": "Essay Writing",
+          "topics": "Argumentative and descriptive essays",
+          "outcome": "Write structured essays"
+        },
+        {
+          "name": "Presentations",
+          "topics": "Short presentations and explanations",
+          "outcome": "Present a topic for 5–10 minutes"
+        },
+        {
+          "name": "IELTS Foundation",
+          "topics": "Exam structure and band descriptors",
+          "outcome": "Understand IELTS requirements"
+        }
       ]
     },
     {
@@ -124,10 +324,26 @@
       "vocab_target": 5000,
       "optional": false,
       "modules": [
-        {"name": "IELTS Introduction", "topics": "Academic vs General Training, exam format", "outcome": "Understand examination structure"},
-        {"name": "IELTS Listening", "topics": "Sections 1–4, note completion, MCQs, matching", "outcome": "Improve listening scores"},
-        {"name": "IELTS Reading", "topics": "Skimming, scanning, headings, True/False/Not Given", "outcome": "Improve reading speed and accuracy"},
-        {"name": "Listening & Reading Mock Tests", "topics": "Timed listening and reading practice tests", "outcome": "Identify weaknesses"}
+        {
+          "name": "IELTS Introduction",
+          "topics": "Academic vs General Training, exam format",
+          "outcome": "Understand examination structure"
+        },
+        {
+          "name": "IELTS Listening",
+          "topics": "Sections 1–4, note completion, MCQs, matching",
+          "outcome": "Improve listening scores"
+        },
+        {
+          "name": "IELTS Reading",
+          "topics": "Skimming, scanning, headings, True/False/Not Given",
+          "outcome": "Improve reading speed and accuracy"
+        },
+        {
+          "name": "Listening & Reading Mock Tests",
+          "topics": "Timed listening and reading practice tests",
+          "outcome": "Identify weaknesses"
+        }
       ]
     },
     {
@@ -137,13 +353,41 @@
       "vocab_target": 5500,
       "optional": false,
       "modules": [
-        {"name": "Writing Task 1 (Academic)", "topics": "Graphs, charts, tables, maps and processes", "outcome": "Write data descriptions"},
-        {"name": "Writing Task 1 (General)", "topics": "Formal, semi-formal and informal letters", "outcome": "Write appropriate letters"},
-        {"name": "Writing Task 2", "topics": "Opinion, discussion, advantages/disadvantages, problem-solution essays", "outcome": "Write structured essays"},
-        {"name": "Speaking Part 1", "topics": "Introduction and familiar topics", "outcome": "Answer personal questions"},
-        {"name": "Speaking Part 2", "topics": "Cue cards and long-turn speaking", "outcome": "Speak for 1–2 minutes"},
-        {"name": "Speaking Part 3", "topics": "Abstract topics and discussions", "outcome": "Develop arguments"},
-        {"name": "Full Mock Tests & Feedback", "topics": "Full-length IELTS tests, band descriptors, error correction", "outcome": "Improve performance"}
+        {
+          "name": "Writing Task 1 (Academic)",
+          "topics": "Graphs, charts, tables, maps and processes",
+          "outcome": "Write data descriptions"
+        },
+        {
+          "name": "Writing Task 1 (General)",
+          "topics": "Formal, semi-formal and informal letters",
+          "outcome": "Write appropriate letters"
+        },
+        {
+          "name": "Writing Task 2",
+          "topics": "Opinion, discussion, advantages/disadvantages, problem-solution essays",
+          "outcome": "Write structured essays"
+        },
+        {
+          "name": "Speaking Part 1",
+          "topics": "Introduction and familiar topics",
+          "outcome": "Answer personal questions"
+        },
+        {
+          "name": "Speaking Part 2",
+          "topics": "Cue cards and long-turn speaking",
+          "outcome": "Speak for 1–2 minutes"
+        },
+        {
+          "name": "Speaking Part 3",
+          "topics": "Abstract topics and discussions",
+          "outcome": "Develop arguments"
+        },
+        {
+          "name": "Full Mock Tests & Feedback",
+          "topics": "Full-length IELTS tests, band descriptors, error correction",
+          "outcome": "Improve performance"
+        }
       ]
     },
     {
@@ -153,13 +397,41 @@
       "vocab_target": 6000,
       "optional": false,
       "modules": [
-        {"name": "Professional Vocabulary", "topics": "Workplace and industry terminology", "outcome": "Understand professional language"},
-        {"name": "Professional Self-Introduction", "topics": "Professional background and skills", "outcome": "Introduce yourself professionally"},
-        {"name": "Email Writing", "topics": "Formal emails, follow-ups and requests", "outcome": "Write professional emails"},
-        {"name": "Meeting Communication", "topics": "Agendas, discussions and minutes", "outcome": "Participate in meetings"},
-        {"name": "Client Communication", "topics": "Requirements, updates and issue explanations", "outcome": "Communicate with clients"},
-        {"name": "Telephone Skills", "topics": "Business calls and professional conversations", "outcome": "Handle calls confidently"},
-        {"name": "Interview Skills", "topics": "HR and technical interview communication", "outcome": "Attend interviews"}
+        {
+          "name": "Professional Vocabulary",
+          "topics": "Workplace and industry terminology",
+          "outcome": "Understand professional language"
+        },
+        {
+          "name": "Professional Self-Introduction",
+          "topics": "Professional background and skills",
+          "outcome": "Introduce yourself professionally"
+        },
+        {
+          "name": "Email Writing",
+          "topics": "Formal emails, follow-ups and requests",
+          "outcome": "Write professional emails"
+        },
+        {
+          "name": "Meeting Communication",
+          "topics": "Agendas, discussions and minutes",
+          "outcome": "Participate in meetings"
+        },
+        {
+          "name": "Client Communication",
+          "topics": "Requirements, updates and issue explanations",
+          "outcome": "Communicate with clients"
+        },
+        {
+          "name": "Telephone Skills",
+          "topics": "Business calls and professional conversations",
+          "outcome": "Handle calls confidently"
+        },
+        {
+          "name": "Interview Skills",
+          "topics": "HR and technical interview communication",
+          "outcome": "Attend interviews"
+        }
       ]
     },
     {
@@ -169,10 +441,26 @@
       "vocab_target": 7000,
       "optional": false,
       "modules": [
-        {"name": "Business Writing", "topics": "Reports, proposals and documentation", "outcome": "Prepare business documents"},
-        {"name": "Negotiation", "topics": "Persuasion, objections and conflict resolution", "outcome": "Negotiate professionally"},
-        {"name": "Business Presentations", "topics": "Business presentations and project updates", "outcome": "Present ideas clearly"},
-        {"name": "Advanced Business Communication", "topics": "Cross-cultural communication and crisis communication", "outcome": "Handle complex professional situations"}
+        {
+          "name": "Business Writing",
+          "topics": "Reports, proposals and documentation",
+          "outcome": "Prepare business documents"
+        },
+        {
+          "name": "Negotiation",
+          "topics": "Persuasion, objections and conflict resolution",
+          "outcome": "Negotiate professionally"
+        },
+        {
+          "name": "Business Presentations",
+          "topics": "Business presentations and project updates",
+          "outcome": "Present ideas clearly"
+        },
+        {
+          "name": "Advanced Business Communication",
+          "topics": "Cross-cultural communication and crisis communication",
+          "outcome": "Handle complex professional situations"
+        }
       ]
     },
     {
@@ -182,13 +470,41 @@
       "vocab_target": 7000,
       "optional": true,
       "modules": [
-        {"name": "Public Speaking", "topics": "Stage confidence and speech delivery", "outcome": "Speak confidently in public"},
-        {"name": "Body Language", "topics": "Eye contact, gestures and posture", "outcome": "Improve presentation"},
-        {"name": "Voice Modulation", "topics": "Tone, pitch, speed and pauses", "outcome": "Speak clearly and effectively"},
-        {"name": "Speech Writing", "topics": "Introduction, body and conclusion", "outcome": "Prepare structured speeches"},
-        {"name": "Storytelling", "topics": "Personal stories and motivational stories", "outcome": "Engage audiences"},
-        {"name": "Presentation Skills", "topics": "Slides, data and visual explanations", "outcome": "Deliver professional presentations"},
-        {"name": "Impromptu Speaking", "topics": "Speaking without preparation", "outcome": "Think and communicate quickly"}
+        {
+          "name": "Public Speaking",
+          "topics": "Stage confidence and speech delivery",
+          "outcome": "Speak confidently in public"
+        },
+        {
+          "name": "Body Language",
+          "topics": "Eye contact, gestures and posture",
+          "outcome": "Improve presentation"
+        },
+        {
+          "name": "Voice Modulation",
+          "topics": "Tone, pitch, speed and pauses",
+          "outcome": "Speak clearly and effectively"
+        },
+        {
+          "name": "Speech Writing",
+          "topics": "Introduction, body and conclusion",
+          "outcome": "Prepare structured speeches"
+        },
+        {
+          "name": "Storytelling",
+          "topics": "Personal stories and motivational stories",
+          "outcome": "Engage audiences"
+        },
+        {
+          "name": "Presentation Skills",
+          "topics": "Slides, data and visual explanations",
+          "outcome": "Deliver professional presentations"
+        },
+        {
+          "name": "Impromptu Speaking",
+          "topics": "Speaking without preparation",
+          "outcome": "Think and communicate quickly"
+        }
       ]
     },
     {
@@ -198,11 +514,31 @@
       "vocab_target": 7000,
       "optional": true,
       "modules": [
-        {"name": "Debate", "topics": "Arguments, counterarguments and evidence", "outcome": "Defend opinions"},
-        {"name": "Persuasive Communication", "topics": "Influence and convincing techniques", "outcome": "Persuade effectively"},
-        {"name": "Leadership Communication", "topics": "Feedback, motivation and delegation", "outcome": "Lead conversations"},
-        {"name": "Interview Communication", "topics": "Media interviews and panel discussions", "outcome": "Handle public questions"},
-        {"name": "Training Skills", "topics": "Teaching, mentoring and coaching", "outcome": "Train other people"}
+        {
+          "name": "Debate",
+          "topics": "Arguments, counterarguments and evidence",
+          "outcome": "Defend opinions"
+        },
+        {
+          "name": "Persuasive Communication",
+          "topics": "Influence and convincing techniques",
+          "outcome": "Persuade effectively"
+        },
+        {
+          "name": "Leadership Communication",
+          "topics": "Feedback, motivation and delegation",
+          "outcome": "Lead conversations"
+        },
+        {
+          "name": "Interview Communication",
+          "topics": "Media interviews and panel discussions",
+          "outcome": "Handle public questions"
+        },
+        {
+          "name": "Training Skills",
+          "topics": "Teaching, mentoring and coaching",
+          "outcome": "Train other people"
+        }
       ]
     }
   ]
