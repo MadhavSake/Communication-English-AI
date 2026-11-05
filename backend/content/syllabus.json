@@ -121,7 +121,7 @@
         },
         {
           "name": "Simple Tenses",
-          "topics": "Simple Present, Past and Future",
+          "topics": "Simple Present, Simple Past and Simple Future: positive, negative and question forms; do/does/did, will; daily-life examples",
           "outcome": "Express time"
         },
         {
@@ -160,7 +160,7 @@
         },
         {
           "name": "Basic Tenses",
-          "topics": "All basic tense forms",
+          "topics": "Present, past and future — indefinite and continuous forms; helping verbs (is/am/are, was/were, will be); positive, negative and question sentences; Hindi-to-English sentence translation practice",
           "outcome": "Express past, present and future"
         },
         {
@@ -242,9 +242,19 @@
       "optional": false,
       "modules": [
         {
-          "name": "Advanced Tenses",
-          "topics": "All 12 tense forms",
-          "outcome": "Use tenses accurately"
+          "name": "Present Tenses (all 4)",
+          "topics": "Present indefinite, continuous, perfect and perfect continuous; structure and helping verbs; positive, negative and question forms; since vs for; Hindi-to-English translation practice",
+          "outcome": "Use all present tenses correctly"
+        },
+        {
+          "name": "Past Tenses (all 4)",
+          "topics": "Past indefinite, continuous, perfect and perfect continuous; structure and helping verbs; positive, negative and question forms; sequencing past events; Hindi-to-English translation practice",
+          "outcome": "Use all past tenses correctly"
+        },
+        {
+          "name": "Future Tenses (all 4)",
+          "topics": "Future indefinite, continuous, perfect and perfect continuous; will/shall and going to; positive, negative and question forms; Hindi-to-English translation practice",
+          "outcome": "Use all future tenses correctly"
         },
         {
           "name": "Conditional Sentences",
