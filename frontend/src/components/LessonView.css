@@ -27,3 +27,8 @@
 .lv-retry { background: none; border: 1px solid #6366f1; color: #a78bfa; border-radius: 8px; padding: 6px 12px; cursor: pointer; font-size: 13px; }
 .note-card { cursor: pointer; }
 .note-card.open { border-color: #6366f1; }
+.lv-hi { margin-top: 4px; padding-left: 10px; border-left: 2px solid #6366f1; color: #c4b5fd; font-size: 14px; line-height: 1.7; }
+.hide-hi .lv-hi { display: none; }
+.lv-actions { display: flex; gap: 8px; align-items: center; }
+.lv-toggle { background: none; border: 1px solid #2d2d3d; color: #94a3b8; border-radius: 999px; padding: 6px 12px; cursor: pointer; font-size: 13px; }
+.lv-toggle.on { border-color: #6366f1; color: #c4b5fd; background: rgba(99, 102, 241, 0.12); }

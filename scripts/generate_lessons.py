@@ -14,6 +14,7 @@ Run in Cloud Shell (uses your free Gemini key and your Google login):
     python3 scripts/generate_lessons.py --force         # regenerate existing
 
 It skips lessons that already exist, so you can stop and re-run safely.
+Notes are bilingual: English content with Hindi (Devanagari) explanations.
 Lessons are saved with reviewed=false — review them before real students use them.
 """
 import argparse
@@ -39,23 +40,51 @@ Expected outcome: {outcome}
 
 Write the lesson in simple English suited to this stage (stages 1–3: very short
 sentences and basic words; stages 7–8: IELTS style; stages 9–12: professional).
+
+The notes are bilingual (English + Hindi):
+- Keep rules, examples, vocabulary words and quiz questions/options in English.
+- Every field ending in "_hi" is everyday spoken Hindi the way people in India
+  actually talk: Hindi words written in Devanagari, and common English words kept
+  in English (Latin script) — e.g. "यह Sentence Present tense में है, क्योंकि
+  action अभी हो रहा है।" Always keep grammar terms (Noun, Verb, Tense, Sentence,
+  Subject, Article…) and everyday English words (time, use, important, example,
+  daily, office…) in English. Do NOT use bookish/pure Hindi (no संज्ञा, क्रिया,
+  वाक्य, काल, विशेषण, उपयोग करें-style formal words). Never write Hindi words in
+  Latin script (no "hai", "mein", "kyunki").
+- How much Hindi: {hindi_level}
 Return ONLY JSON with exactly this shape:
 {{
   "title": "lesson title",
   "summary": "1–2 sentence overview",
+  "summary_hi": "same overview in simple Hindi",
   "explanation": ["paragraph 1", "paragraph 2", "..."],
+  "explanation_hi": ["Hindi explanation of paragraph 1", "Hindi explanation of paragraph 2", "..."],
   "key_points": ["short rule or tip", "..."],
-  "examples": [{{"english": "example sentence", "note": "why it is correct"}}],
-  "vocabulary": [{{"word": "word", "meaning": "simple meaning", "example": "sentence"}}],
-  "common_mistakes": [{{"wrong": "incorrect sentence", "right": "corrected sentence", "why": "short reason"}}],
+  "key_points_hi": ["same rule or tip in Hindi", "..."],
+  "examples": [{{"english": "example sentence", "note": "why it is correct", "hindi": "Hindi meaning of the sentence"}}],
+  "vocabulary": [{{"word": "word", "meaning": "simple English meaning", "meaning_hi": "Hindi meaning", "example": "sentence"}}],
+  "common_mistakes": [{{"wrong": "incorrect sentence", "right": "corrected sentence", "why": "short reason", "why_hi": "reason in Hindi"}}],
   "practice": ["a short speaking or writing task for the learner"],
-  "quiz": [{{"question": "question", "options": ["A", "B", "C", "D"], "answer_index": 0, "explanation": "why"}}]
+  "practice_hi": ["same task instruction in Hindi"],
+  "quiz": [{{"question": "question", "options": ["A", "B", "C", "D"], "answer_index": 0, "explanation": "why", "explanation_hi": "why, in Hindi"}}]
 }}
+explanation_hi must have the same number of items as explanation.
 Use 3–5 explanation paragraphs, 5–8 examples, 8–12 vocabulary words,
 3–5 common mistakes, 2–3 practice tasks and exactly 5 quiz questions.
 Vary the position of the correct option across quiz questions."""
 
-REQUIRED = ["title", "summary", "explanation", "examples", "vocabulary", "common_mistakes", "quiz"]
+REQUIRED = ["title", "summary", "explanation", "explanation_hi", "examples", "vocabulary", "common_mistakes", "quiz"]
+
+
+def hindi_level(stage_no: int) -> str:
+    if stage_no <= 4:
+        return ("detailed — explain every paragraph fully in Hindi, give Hindi meaning for every "
+                "example and word; the learner is a beginner who thinks in Hindi.")
+    if stage_no <= 8:
+        return ("short — 1–2 sentence Hindi note per paragraph, Hindi meanings for words and "
+                "examples, Hindi reasons for mistakes.")
+    return ("minimal — brief Hindi help only for difficult ideas and words; keep example "
+            "Hindi meanings short.")
 
 
 def valid(lesson: dict) -> bool:
@@ -71,6 +100,7 @@ def generate(model, stage: dict, idx: int, mod: dict, retries: int = 5) -> dict:
     prompt = PROMPT.format(
         stage=stage["stage"], stage_name=stage["name"], stage_focus=stage["focus"],
         module=idx, module_name=mod["name"], topics=mod["topics"], outcome=mod["outcome"],
+        hindi_level=hindi_level(stage["stage"]),
     )
     delay = 20
     for attempt in range(1, retries + 1):

@@ -8,6 +8,19 @@ export default function LessonView({ stage, module, title, topics, onClose }) {
   const [lesson, setLesson] = useState(undefined); // undefined = loading, null = not available
   const [answers, setAnswers] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  // Hindi help: on by default for stages 1–8, off for 9–12; the learner's choice is remembered.
+  const [showHindi, setShowHindi] = useState(() => {
+    try {
+      const saved = localStorage.getItem('showHindi');
+      if (saved !== null) return saved === '1';
+    } catch (_) { /* storage unavailable */ }
+    return stage <= 8;
+  });
+  const toggleHindi = () => {
+    const next = !showHindi;
+    setShowHindi(next);
+    try { localStorage.setItem('showHindi', next ? '1' : '0'); } catch (_) { /* ignore */ }
+  };
 
   useEffect(() => {
     setLesson(undefined); setAnswers({}); setSubmitted(false);
@@ -27,13 +40,19 @@ export default function LessonView({ stage, module, title, topics, onClose }) {
   };
 
   return (
-    <div className="lesson-view card">
+    <div className={`lesson-view card${showHindi ? '' : ' hide-hi'}`}>
       <div className="lv-head">
         <div>
           <div className="lv-kicker">Stage {stage} · Module {module}</div>
           <h2>{lesson?.title || title}</h2>
         </div>
-        <button className="lv-close" onClick={onClose} aria-label="Close lesson">✕</button>
+        <div className="lv-actions">
+          <button type="button" className={`lv-toggle${showHindi ? ' on' : ''}`} onClick={toggleHindi}
+            aria-pressed={showHindi}>
+            हिन्दी मदद: {showHindi ? 'On' : 'Off'}
+          </button>
+          <button className="lv-close" onClick={onClose} aria-label="Close lesson">✕</button>
+        </div>
       </div>
 
       {lesson === undefined && <p className="lv-muted">Loading lesson…</p>}
@@ -47,13 +66,21 @@ export default function LessonView({ stage, module, title, topics, onClose }) {
       {lesson && (
         <>
           {lesson.summary && <p className="lv-summary">{lesson.summary}</p>}
+          {lesson.summary_hi && <p className="lv-hi">{lesson.summary_hi}</p>}
 
-          {lesson.explanation?.map((p, i) => <p key={i} className="lv-para">{p}</p>)}
+          {lesson.explanation?.map((p, i) => (
+            <div key={i}>
+              <p className="lv-para">{p}</p>
+              {lesson.explanation_hi?.[i] && <p className="lv-hi">{lesson.explanation_hi[i]}</p>}
+            </div>
+          ))}
 
           {lesson.key_points?.length > 0 && (
             <section>
               <h3>Key points</h3>
-              <ul>{lesson.key_points.map((k, i) => <li key={i}>{k}</li>)}</ul>
+              <ul>{lesson.key_points.map((k, i) => (
+                <li key={i}>{k}{lesson.key_points_hi?.[i] && <div className="lv-hi">{lesson.key_points_hi[i]}</div>}</li>
+              ))}</ul>
             </section>
           )}
 
@@ -62,7 +89,8 @@ export default function LessonView({ stage, module, title, topics, onClose }) {
               <h3>Examples</h3>
               <ul className="lv-examples">
                 {lesson.examples.map((e, i) => (
-                  <li key={i}><strong>{e.english}</strong>{e.note && <span> — {e.note}</span>}</li>
+                  <li key={i}><strong>{e.english}</strong>{e.note && <span> — {e.note}</span>}
+                    {e.hindi && <div className="lv-hi">{e.hindi}</div>}</li>
                 ))}
               </ul>
             </section>
@@ -76,6 +104,7 @@ export default function LessonView({ stage, module, title, topics, onClose }) {
                   <div key={i} className="lv-word">
                     <div className="lv-w">{v.word}</div>
                     <div className="lv-m">{v.meaning}</div>
+                    {v.meaning_hi && <div className="lv-hi">{v.meaning_hi}</div>}
                     <div className="lv-ex">“{v.example}”</div>
                   </div>
                 ))}
@@ -91,6 +120,7 @@ export default function LessonView({ stage, module, title, topics, onClose }) {
                   <span className="err-wrong">✗ {m.wrong}</span>
                   <span className="err-correct">✓ {m.right}</span>
                   <span className="lv-muted">{m.why}</span>
+                  {m.why_hi && <span className="lv-hi">{m.why_hi}</span>}
                 </div>
               ))}
             </section>
@@ -99,7 +129,9 @@ export default function LessonView({ stage, module, title, topics, onClose }) {
           {lesson.practice?.length > 0 && (
             <section>
               <h3>Practice</h3>
-              <ul>{lesson.practice.map((t, i) => <li key={i}>{t}</li>)}</ul>
+              <ul>{lesson.practice.map((t, i) => (
+                <li key={i}>{t}{lesson.practice_hi?.[i] && <div className="lv-hi">{lesson.practice_hi[i]}</div>}</li>
+              ))}</ul>
             </section>
           )}
 
@@ -125,6 +157,7 @@ export default function LessonView({ stage, module, title, topics, onClose }) {
                     })}
                   </div>
                   {submitted && q.explanation && <div className="lv-muted lv-expl">{q.explanation}</div>}
+                  {submitted && q.explanation_hi && <div className="lv-hi">{q.explanation_hi}</div>}
                 </div>
               ))}
               {!submitted ? (
