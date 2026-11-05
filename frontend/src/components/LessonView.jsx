@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { recordActivity } from '../services/progress';
@@ -6,6 +6,12 @@ import './LessonView.css';
 
 export default function LessonView({ stage, module, title, topics, onClose }) {
   const [lesson, setLesson] = useState(undefined); // undefined = loading, null = not available
+  const boxRef = useRef(null);
+
+  // Bring the lesson into view when a module is opened
+  useEffect(() => {
+    boxRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, [stage, module]);
   const [answers, setAnswers] = useState({});
   const [submitted, setSubmitted] = useState(false);
   // Hindi help: on by default for stages 1–8, off for 9–12; the learner's choice is remembered.
@@ -40,7 +46,7 @@ export default function LessonView({ stage, module, title, topics, onClose }) {
   };
 
   return (
-    <div className={`lesson-view card${showHindi ? '' : ' hide-hi'}`}>
+    <div ref={boxRef} className={`lesson-view card${showHindi ? '' : ' hide-hi'}`}>
       <div className="lv-head">
         <div>
           <div className="lv-kicker">Stage {stage} · Module {module}</div>
