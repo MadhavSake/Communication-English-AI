@@ -146,11 +146,42 @@
     display: none;
   }
 
-  .sidebar-footer {
+  .streak-badge {
     display: none;
   }
 
   .app-layout {
     flex-direction: column;
   }
+}
+
+/* Signed-in user */
+.user-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.user-email {
+  font-size: 12px;
+  color: #94a3b8;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.logout-btn {
+  padding: 8px;
+  font-size: 13px;
+  color: #cbd5e1;
+  background: transparent;
+  border: 1px solid #2d2d3d;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  border-color: #6366f1;
+  color: #ffffff;
 }

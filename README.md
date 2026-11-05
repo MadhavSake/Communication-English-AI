@@ -84,3 +84,13 @@ backend deploy to `--service-account=english-ai-runtime@...` and
 Push to `main` (or run the workflow manually) → GitHub Actions:
 - Backend → Cloud Run `english-ai-backend`
 - Frontend → Cloud Run `english-ai-frontend`, built with the backend URL baked in
+
+## Login & per-user progress (Firebase)
+
+- Email/password login via Firebase Authentication.
+- Each user's level, daily sessions and average scores are stored in
+  Firestore at `users/{uid}`; `firestore.rules` restricts each user to their
+  own document.
+- The web config goes in the repo **Variable** `FIREBASE_CONFIG` (Settings →
+  Secrets and variables → Actions → Variables). Paste the `firebaseConfig`
+  snippet from the Firebase console as-is. Without it the app runs without login.

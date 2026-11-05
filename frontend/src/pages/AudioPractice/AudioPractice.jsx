@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { recordActivity } from '../../services/progress';
 import Webcam from 'react-webcam';
 import { analyzeAudio, analyzeFaceBase64 } from '../../services/api';
 import './AudioPractice.css';
@@ -51,6 +52,7 @@ export default function AudioPractice() {
     try {
       const res = await analyzeAudio(audioBlob, level);
       setResult(res.data);
+      if (res.data?.analysis) recordActivity('audio', res.data.analysis);
     } catch (e) {
       setResult({ success: false, message: 'Analysis failed. Please try again.' });
     } finally {

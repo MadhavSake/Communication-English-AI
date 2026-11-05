@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { recordActivity } from '../../services/progress';
 import { getNotes, getLevelInfo } from '../../services/api';
 import { checkGrammar } from '../../services/api';
 import './Notes.css';
@@ -22,6 +23,7 @@ export default function Notes() {
     try {
       const res = await checkGrammar(text, level);
       setResult(res.data);
+      recordActivity('grammar', res.data);
     } catch {
       setResult({ error: 'Failed to check grammar. Please try again.' });
     } finally {

@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useAuth } from '../auth/AuthContext';
+import { saveLevel } from '../services/progress';
 import { NavLink } from 'react-router-dom';
 import './Sidebar.css';
 
@@ -13,6 +15,7 @@ const navItems = [
 ];
 
 export default function Sidebar() {
+  const { user, logout } = useAuth();
   const [level, setLevel] = useState(
     parseInt(localStorage.getItem('userLevel') || '1')
   );
@@ -22,7 +25,15 @@ export default function Sidebar() {
     setLevel(newLevel);
     localStorage.setItem('userLevel', newLevel);
     window.dispatchEvent(new Event('levelChanged'));
+    saveLevel(newLevel).catch(() => {});
   };
+
+  // Pick up the level loaded from the user's profile after login
+  useEffect(() => {
+    const sync = () => setLevel(parseInt(localStorage.getItem('userLevel') || '1'));
+    window.addEventListener('levelChanged', sync);
+    return () => window.removeEventListener('levelChanged', sync);
+  }, []);
 
   return (
     <aside className="sidebar">
@@ -75,6 +86,12 @@ export default function Sidebar() {
 
       <div className="sidebar-footer">
         <div className="streak-badge">🔥 Keep learning daily!</div>
+        {user && (
+          <div className="user-box">
+            <div className="user-email" title={user.email}>{user.email}</div>
+            <button className="logout-btn" onClick={logout}>Log out</button>
+          </div>
+        )}
       </div>
     </aside>
   );

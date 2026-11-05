@@ -1,28 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { loadProgress, average, streak, lastSevenDays } from '../../services/progress';
 import './Progress.css';
 
 export default function Progress() {
   const [level] = useState(parseInt(localStorage.getItem('userLevel') || '1'));
 
+  const [data, setData] = useState(null);
+  useEffect(() => { loadProgress().then(setData).catch(() => {}); }, []);
+
+  const sc = data?.scores;
   const skills = [
-    { name: 'Speaking',   score: 65, icon: '🎤' },
-    { name: 'Listening',  score: 70, icon: '👂' },
-    { name: 'Reading',    score: 75, icon: '📖' },
-    { name: 'Writing',    score: 60, icon: '✍️'  },
-    { name: 'Grammar',    score: 68, icon: '📝' },
-    { name: 'Vocabulary', score: 72, icon: '💬' },
+    { name: 'Grammar',    score: average(sc, 'grammar'),    icon: '📝' },
+    { name: 'Speaking',   score: average(sc, 'fluency'),    icon: '🎤' },
+    { name: 'Vocabulary', score: average(sc, 'vocabulary'), icon: '💬' },
+    { name: 'Overall',    score: average(sc, 'overall'),    icon: '🎯' },
   ];
 
-  const weeklyData = [
-    { day: 'Mon', sessions: 2 },
-    { day: 'Tue', sessions: 3 },
-    { day: 'Wed', sessions: 1 },
-    { day: 'Thu', sessions: 4 },
-    { day: 'Fri', sessions: 2 },
-    { day: 'Sat', sessions: 5 },
-    { day: 'Sun', sessions: 3 },
-  ];
-  const maxSessions = Math.max(...weeklyData.map((d) => d.sessions));
+  const weeklyData = lastSevenDays(data?.days);
+  const dayStreak = streak(data?.days);
+  const totalSessions = data?.totals?.sessions || 0;
+  const maxSessions = Math.max(1, ...weeklyData.map((d) => d.sessions));
 
   const scoreColor = (s) => s >= 75 ? '#4ade80' : s >= 50 ? '#fbbf24' : '#f87171';
 
@@ -43,15 +40,15 @@ export default function Progress() {
         </div>
         <div className="summary-card card">
           <div className="sc-icon">🔥</div>
-          <div className="sc-value">7</div>
+          <div className="sc-value">{dayStreak}</div>
           <div className="sc-label">Day Streak</div>
-          <div className="sc-sub">Keep it up!</div>
+          <div className="sc-sub">{dayStreak ? 'Keep it up!' : 'Practice today to start'}</div>
         </div>
         <div className="summary-card card">
           <div className="sc-icon">⏱️</div>
-          <div className="sc-value">24</div>
-          <div className="sc-label">Hours Practiced</div>
-          <div className="sc-sub">This month</div>
+          <div className="sc-value">{totalSessions}</div>
+          <div className="sc-label">Practice Sessions</div>
+          <div className="sc-sub">All time</div>
         </div>
         <div className="summary-card card">
           <div className="sc-icon">🎯</div>
@@ -75,11 +72,11 @@ export default function Progress() {
                 <div className="skill-bar-wrap">
                   <div
                     className="skill-bar"
-                    style={{ width: `${s.score}%`, background: scoreColor(s.score) }}
+                    style={{ width: `${s.score ?? 0}%`, background: scoreColor(s.score ?? 0) }}
                   />
                 </div>
-                <div className="skill-score" style={{ color: scoreColor(s.score) }}>
-                  {s.score}
+                <div className="skill-score" style={{ color: s.score == null ? '#64748b' : scoreColor(s.score) }}>
+                  {s.score ?? '—'}
                 </div>
               </div>
             ))}

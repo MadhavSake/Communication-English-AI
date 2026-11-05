@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { recordActivity } from '../../services/progress';
 import { sendChatMessage, getChatScenarios } from '../../services/api';
 import './LiveChat.css';
 
@@ -34,6 +35,7 @@ export default function LiveChat() {
 
     try {
       const res = await sendChatMessage(userMsg, history, level, scenario);
+      recordActivity('chat');
       setMessages((prev) => [...prev, { role: 'model', text: res.data.response }]);
     } catch {
       setMessages((prev) => [...prev, { role: 'model', text: 'Sorry, I had trouble responding. Please try again.' }]);

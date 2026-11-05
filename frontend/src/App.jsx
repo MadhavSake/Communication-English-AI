@@ -8,9 +8,16 @@ import Videos from './pages/Videos/Videos';
 import Books from './pages/Books/Books';
 import LiveChat from './pages/LiveChat/LiveChat';
 import Progress from './pages/Progress/Progress';
+import Login from './pages/Login/Login';
+import { AuthProvider, useAuth } from './auth/AuthContext';
+import { firebaseReady } from './firebase';
 import './App.css';
+import './pages/Login/Login.css';
 
-function App() {
+function Shell() {
+  const { user, loading } = useAuth();
+  if (firebaseReady && loading) return <div className="app-loading">Loading…</div>;
+  if (firebaseReady && !user) return <Login />;
   return (
     <Router>
       <div className="app-layout">
@@ -29,6 +36,14 @@ function App() {
         </main>
       </div>
     </Router>
+  );
+}
+
+function App() {
+  return (
+    <AuthProvider>
+      <Shell />
+    </AuthProvider>
   );
 }
 
