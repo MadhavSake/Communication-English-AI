@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { STAGES, currentStage } from '../stages';
 import { useAuth } from '../auth/AuthContext';
+import { LegalLinks } from '../pages/Legal/Legal';
+import '../pages/Legal/Legal.css';
 import { saveLevel } from '../services/progress';
 import { NavLink } from 'react-router-dom';
 import './Sidebar.css';
@@ -83,6 +85,7 @@ export default function Sidebar() {
             <button className="logout-btn" onClick={logout}>Log out</button>
           </div>
         )}
+        <LegalLinks />
       </div>
     </aside>
   );

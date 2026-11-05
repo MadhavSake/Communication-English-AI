@@ -5,6 +5,8 @@ import {
   sendPasswordResetEmail,
 } from 'firebase/auth';
 import { auth } from '../../firebase';
+import { LegalLinks } from '../Legal/Legal';
+import '../Legal/Legal.css';
 import './Login.css';
 
 const messages = {
@@ -84,6 +86,12 @@ export default function Login() {
             {mode === 'signin' ? 'Create an account' : 'Sign in'}
           </button>
         </div>
+        {mode === 'signup' && (
+          <p className="login-sub" style={{ marginTop: 8, fontSize: 12 }}>
+            By creating an account you agree to our Terms and Privacy Policy.
+          </p>
+        )}
+        <LegalLinks />
       </form>
     </div>
   );
