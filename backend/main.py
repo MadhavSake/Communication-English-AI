@@ -33,6 +33,15 @@ async def ai_rate_limit(request: Request, call_next):
     path = request.url.path
     if request.method == "POST" or path.startswith("/api/grammar/daily-prompt"):
         if path.startswith(AI_PREFIXES):
+            # Only signed-in, allowed users may use AI features (they cost money).
+            from services.auth import verify, AuthError
+            import asyncio
+            header = request.headers.get("authorization", "")
+            token = header[7:] if header.lower().startswith("bearer ") else ""
+            try:
+                await asyncio.to_thread(verify, token)
+            except AuthError as e:
+                return JSONResponse(status_code=e.status, content={"detail": e.message})
             ip = (request.headers.get("x-forwarded-for") or (request.client.host if request.client else "?")).split(",")[0].strip()
             now = time.time()
             q = _hits[ip]

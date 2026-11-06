@@ -5,6 +5,13 @@ import { ensureProfile } from '../services/progress';
 
 const AuthContext = createContext({ user: null, loading: true });
 
+// Who may use the app right now (the backend enforces the same list).
+const ALLOWED = (process.env.REACT_APP_ALLOWED_EMAILS || 'sakemadhav97@gmail.com')
+  .split(/[;,]/).map((e) => e.trim().toLowerCase()).filter(Boolean);
+export const isAllowed = (email) => !ALLOWED.length || ALLOWED.includes((email || '').toLowerCase());
+let blockedNotice = '';
+export const takeBlockedNotice = () => { const m = blockedNotice; blockedNotice = ''; return m; };
+
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(firebaseReady);
@@ -12,6 +19,11 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     if (!firebaseReady) return undefined;
     return onAuthStateChanged(auth, async (u) => {
+      if (u && !isAllowed(u.email)) {
+        blockedNotice = 'This account does not have access yet. New sign-ups are closed for now.';
+        await signOut(auth);
+        return; // the sign-out fires this listener again with u = null
+      }
       if (u) {
         try {
           const profile = await ensureProfile(u);

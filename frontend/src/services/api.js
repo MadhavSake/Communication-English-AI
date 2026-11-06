@@ -1,10 +1,18 @@
 import axios from 'axios';
+import { auth } from '../firebase';
 
 export const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8080';
 
 const api = axios.create({
   baseURL: API_BASE,
   timeout: 30000,
+});
+
+// Send the signed-in user's Firebase ID token so the backend can allow AI features.
+api.interceptors.request.use(async (config) => {
+  const user = auth?.currentUser;
+  if (user) config.headers.Authorization = `Bearer ${await user.getIdToken()}`;
+  return config;
 });
 
 // Grammar APIs

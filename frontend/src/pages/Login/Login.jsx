@@ -5,6 +5,7 @@ import {
   sendPasswordResetEmail,
 } from 'firebase/auth';
 import { auth } from '../../firebase';
+import { takeBlockedNotice } from '../../auth/AuthContext';
 import { LegalLinks } from '../Legal/Legal';
 import '../Legal/Legal.css';
 import './Login.css';
@@ -22,7 +23,7 @@ export default function Login() {
   const [mode, setMode] = useState('signin'); // signin | signup
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [error, setError] = useState(() => takeBlockedNotice());
   const [info, setInfo] = useState('');
   const [busy, setBusy] = useState(false);
 
@@ -79,18 +80,7 @@ export default function Login() {
           <button type="button" className="link-btn" onClick={reset}>Forgot password?</button>
         )}
 
-        <div className="login-switch">
-          {mode === 'signin' ? 'New here?' : 'Already have an account?'}{' '}
-          <button type="button" className="link-btn"
-            onClick={() => { setMode(mode === 'signin' ? 'signup' : 'signin'); setError(''); setInfo(''); }}>
-            {mode === 'signin' ? 'Create an account' : 'Sign in'}
-          </button>
-        </div>
-        {mode === 'signup' && (
-          <p className="login-sub" style={{ marginTop: 8, fontSize: 12 }}>
-            By creating an account you agree to our Terms and Privacy Policy.
-          </p>
-        )}
+        <p className="login-sub" style={{ marginTop: 10, fontSize: 12 }}>New sign-ups are closed for now.</p>
         <LegalLinks />
       </form>
     </div>

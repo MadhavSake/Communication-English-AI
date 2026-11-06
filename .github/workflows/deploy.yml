@@ -65,7 +65,7 @@ jobs:
             --cpu=1 \
             --min-instances=0 \
             --max-instances=3 \
-            --set-env-vars="GEMINI_USE_VERTEX=true,GOOGLE_CLOUD_PROJECT=${{ env.PROJECT_ID }},VERTEX_LOCATION=global,GEMINI_MODEL=gemini-flash-lite-latest,FIREBASE_PROJECT=${{ env.FIREBASE_PROJECT }}" \
+            --set-env-vars="GEMINI_USE_VERTEX=true,GOOGLE_CLOUD_PROJECT=${{ env.PROJECT_ID }},VERTEX_LOCATION=global,GEMINI_MODEL=gemini-flash-lite-latest,FIREBASE_PROJECT=${{ env.FIREBASE_PROJECT }},ALLOWED_EMAILS=sakemadhav97@gmail.com" \
             --timeout=900 \
             --project=${{ env.PROJECT_ID }}
 

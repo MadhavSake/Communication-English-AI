@@ -29,7 +29,6 @@ router = APIRouter()
 
 LIVE_MODEL = os.getenv("LIVE_MODEL", "gemini-live-2.5-flash-preview-native-audio-09-2025")
 LIVE_VOICE = os.getenv("LIVE_VOICE", "Kore")
-FIREBASE_PROJECT = os.getenv("FIREBASE_PROJECT", "")
 MAX_SESSION_SECONDS = int(os.getenv("LIVE_MAX_SESSION_SECONDS", "300"))      # 5 min
 MAX_DAILY_SECONDS = int(os.getenv("LIVE_MAX_DAILY_SECONDS", "600"))          # 10 min / user / day
 MAX_TRANSCRIPT_CHARS = 12000
@@ -52,11 +51,8 @@ def _today() -> str:
 
 
 def _verify_token(token: str) -> dict:
-    if not FIREBASE_PROJECT:
-        raise RuntimeError("FIREBASE_PROJECT is not configured")
-    from google.auth.transport import requests as ga_requests
-    from google.oauth2 import id_token
-    return id_token.verify_firebase_token(token, ga_requests.Request(), audience=FIREBASE_PROJECT)
+    from services.auth import verify
+    return verify(token)
 
 
 def _system_instruction(stage: int, scenario: str) -> str:
