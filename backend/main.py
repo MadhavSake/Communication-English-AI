@@ -56,6 +56,7 @@ _ROUTERS = [
     ("vision",  "/api/vision",  "Vision"),
     ("content", "/api/content", "Content"),
     ("chat",    "/api/chat",    "Chat"),
+    ("live",    "/api/live",    "Live"),
 ]
 for _name, _prefix, _tag in _ROUTERS:
     try:

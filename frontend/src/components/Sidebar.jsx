@@ -14,6 +14,7 @@ const navItems = [
   { path: '/videos',     icon: '🎬', label: 'Videos'          },
   { path: '/books',      icon: '📖', label: 'Books'           },
   { path: '/chat',       icon: '💬', label: 'Live Chat'       },
+  { path: '/voice',      icon: '🎙️', label: 'Live Voice'      },
   { path: '/progress',   icon: '📊', label: 'Progress'        },
 ];
 

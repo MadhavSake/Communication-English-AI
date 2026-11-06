@@ -7,6 +7,7 @@ import AudioPractice from './pages/AudioPractice/AudioPractice';
 import Videos from './pages/Videos/Videos';
 import Books from './pages/Books/Books';
 import LiveChat from './pages/LiveChat/LiveChat';
+import LiveVoice from './pages/LiveVoice/LiveVoice';
 import Progress from './pages/Progress/Progress';
 import Login from './pages/Login/Login';
 import Legal from './pages/Legal/Legal';
@@ -31,6 +32,7 @@ function Protected() {
           <Route path="/videos" element={<Videos />} />
           <Route path="/books" element={<Books />} />
           <Route path="/chat" element={<LiveChat />} />
+          <Route path="/voice" element={<LiveVoice />} />
           <Route path="/progress" element={<Progress />} />
         </Routes>
       </main>
